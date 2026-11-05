@@ -5,140 +5,294 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Christopher Jose — Robotics &amp; AI Engineer</title>
 <meta name="description" content="Portfolio of Christopher Jose: robotics simulation, autonomous navigation, multi-camera vision analytics, humanoid RL and digital twins.">
+<meta property="og:title" content="Christopher Jose — Robotics & AI Engineer">
+<meta property="og:image" content="assets/rover_mission.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fafaf9;--fg:#1c1917;--muted:#57534e;--card:#fff;--line:#e7e5e4;--accent:#0f766e;--chip:#f0fdfa}
-@media (prefers-color-scheme:dark){:root{--bg:#0c0a09;--fg:#f5f5f4;--muted:#a8a29e;--card:#1c1917;--line:#292524;--accent:#2dd4bf;--chip:#042f2e}}
+:root{
+  --bg:#070b14;--bg2:#0d1424;--card:#111a2e;--line:#1e2a44;
+  --fg:#e6ecf5;--muted:#8b98b0;--accent:#5eead4;--accent2:#818cf8;
+  --glow:rgba(94,234,212,.12);--shadow:0 20px 50px -20px rgba(0,0,0,.6);
+}
+@media (prefers-color-scheme:light){:root{
+  --bg:#f7f8fb;--bg2:#eef1f7;--card:#fff;--line:#dfe4ee;
+  --fg:#0d1424;--muted:#55607a;--accent:#0d9488;--accent2:#4f46e5;
+  --glow:rgba(13,148,136,.10);--shadow:0 20px 40px -24px rgba(13,20,36,.25);
+}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-a{color:var(--accent)}
-.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
-header{padding:72px 0 40px;border-bottom:1px solid var(--line)}
-h1{font-size:clamp(2rem,5vw,3rem);margin:0 0 8px;letter-spacing:-.02em}
-.tag{font-size:1.15rem;color:var(--muted);max-width:720px;margin:0 0 20px}
-.links{display:flex;flex-wrap:wrap;gap:10px}
-.links a{padding:8px 14px;border:1px solid var(--line);border-radius:8px;text-decoration:none;background:var(--card)}
-h2{font-size:1.4rem;margin:48px 0 16px}
-.skills{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none;margin:0}
-.chip{display:inline-block;background:var(--chip);color:var(--accent);border-radius:999px;padding:3px 10px;font-size:.82rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
-.card img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:#111;border-bottom:1px solid var(--line)}
-.card .duo{display:grid;grid-template-columns:1fr 1fr}
-.card .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
-.card h3{margin:0;font-size:1.1rem}
-.card p{margin:0;color:var(--muted);font-size:.95rem}
-.card ul{margin:0;padding-left:18px;color:var(--muted);font-size:.92rem}
-.card .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
-.note{font-size:.8rem;color:var(--muted)}
-footer{padding:48px 0;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line);margin-top:56px}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(600px circle at 15% 10%,var(--glow),transparent 60%),radial-gradient(500px circle at 90% 30%,rgba(129,140,248,.10),transparent 60%)}
+a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 16px}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;letter-spacing:-.02em;line-height:1.15}
+.grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* nav */
+nav.top{position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:color-mix(in srgb,var(--bg) 75%,transparent);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:"Space Grotesk";font-weight:700;font-size:1.2rem;text-decoration:none}
+.logo span{color:var(--accent)}
+nav.top ul{display:flex;gap:24px;list-style:none;margin:0;padding:0;font-size:.9rem}
+nav.top ul a{text-decoration:none;color:var(--muted)}
+nav.top ul a:hover{color:var(--accent)}
+nav.top ul .n{color:var(--accent);margin-right:4px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding:88px 0 56px}
+.eyebrow{color:var(--accent);font-size:.9rem;margin:0 0 14px}
+.hero h1{font-size:clamp(2.6rem,6vw,4.2rem);margin:0 0 12px}
+.hero h2{font-size:clamp(1.3rem,2.6vw,1.9rem);margin:0 0 20px;color:var(--muted);font-weight:500}
+.hero p{color:var(--muted);max-width:520px;margin:0 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:10px;border:1px solid var(--line);text-decoration:none;font-weight:500;font-size:.95rem;background:var(--card);transition:transform .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:#04121a;border-color:transparent}
+.btn svg{width:18px;height:18px}
+.frame{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:#000}
+.frame video,.frame img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.frame .cap{position:absolute;left:12px;bottom:12px;font-size:.75rem;padding:5px 10px;border-radius:8px;background:rgba(7,11,20,.75);color:#e6ecf5}
+.frame .cap::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#ef4444;margin-right:7px;vertical-align:1px;animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.25}}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:24px}
+.stat{background:var(--bg2);padding:20px}
+.stat b{display:block;font-family:"Space Grotesk";font-size:1.7rem}
+.stat span{color:var(--muted);font-size:.85rem}
+
+/* sections */
+section{padding:72px 0 8px}
+.sh{display:flex;align-items:center;gap:16px;margin:0 0 40px;font-size:clamp(1.5rem,3vw,2rem)}
+.sh .n{color:var(--accent);font-size:1rem;font-weight:400}
+.sh::after{content:"";flex:1;height:1px;background:var(--line);max-width:300px}
+
+/* featured rows */
+.feat{display:grid;grid-template-columns:repeat(12,1fr);align-items:center;margin-bottom:96px}
+.feat .frame{grid-column:1/8;grid-row:1}
+.feat .txt{grid-column:7/13;grid-row:1;text-align:right;z-index:1}
+.feat.flip .frame{grid-column:6/13}
+.feat.flip .txt{grid-column:1/7;text-align:left}
+.feat .kind{color:var(--accent);font-size:.82rem;margin:0 0 6px}
+.feat h3{font-size:1.65rem;margin:0 0 16px}
+.feat .desc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;color:var(--muted);box-shadow:var(--shadow);font-size:.95rem}
+.feat .desc p{margin:0}
+.feat .desc ul{margin:10px 0 0;padding:0;list-style:none}
+.feat .desc li{margin-top:4px}
+.feat .desc li::before{content:"▹ ";color:var(--accent)}
+.tech{display:flex;flex-wrap:wrap;gap:6px 16px;list-style:none;padding:0;margin:16px 0 0;font-size:.8rem;color:var(--muted)}
+.feat .txt .tech{justify-content:flex-end}
+.feat.flip .txt .tech{justify-content:flex-start}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line)}
+.duo img,.duo video{aspect-ratio:8/10}
+
+/* other projects */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-6px);border-color:var(--accent)}
+.card img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;border-bottom:1px solid var(--line)}
+.card .ph{aspect-ratio:16/10;display:grid;place-items:center;background:linear-gradient(135deg,var(--bg2),var(--card));border-bottom:1px solid var(--line);color:var(--accent);font-size:2.4rem}
+.card .body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.card h3{margin:0 0 8px;font-size:1.15rem}
+.card p{margin:0;color:var(--muted);font-size:.92rem}
+.card .tech{margin-top:auto;padding-top:14px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.skills div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.skills h3{margin:0 0 12px;font-size:1rem;color:var(--accent)}
+.skills ul{list-style:none;margin:0;padding:0;color:var(--muted);font-size:.92rem}
+.skills li{padding:4px 0;border-bottom:1px dashed var(--line)}
+.skills li:last-child{border:0}
+
+/* contact */
+.contact{text-align:center;padding:96px 0}
+.contact h2{font-size:clamp(2rem,5vw,3rem);margin:8px 0 16px}
+.contact p{color:var(--muted);max-width:520px;margin:0 auto 28px}
+.contact .btns{justify-content:center}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.82rem;text-align:center}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.frame .cap::before{animation:none}html{scroll-behavior:auto}}
+
+/* responsive */
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:56px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .feat,.feat.flip{display:block;margin-bottom:64px}
+  .feat .txt,.feat.flip .txt{text-align:left;margin-top:16px}
+  .feat .txt .tech{justify-content:flex-start}
+  .skills{grid-template-columns:repeat(2,1fr)}
+  nav.top ul{gap:16px}
+}
+@media (max-width:560px){
+  nav.top ul .n{display:none}
+  .skills{grid-template-columns:1fr}
+  .stat b{font-size:1.4rem}
+}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <h1>Christopher Jose</h1>
-    <p class="tag">Robotics &amp; AI engineer. I build simulation-first robotics systems: Isaac Sim digital twins, autonomous navigation on Jetson, multi-camera vision analytics, humanoid reinforcement learning and scan-to-CAD pipelines.</p>
-    <nav class="links">
-      <!-- TODO: replace YOUR-LINKEDIN with your profile handle -->
-      <a href="https://github.com/chrisjzac">GitHub</a>
-      <a href="https://www.linkedin.com/in/YOUR-LINKEDIN">LinkedIn</a>
-      <a href="mailto:christopher.jose@ignitarium.in">Email</a>
-      <a href="#projects">Projects</a>
-    </nav>
-  </div>
-</header>
+
+<nav class="top"><div class="wrap">
+  <a class="logo" href="#">CJ<span>.</span></a>
+  <ul class="mono">
+    <li><a href="#work"><span class="n">01.</span>Work</a></li>
+    <li><a href="#skills"><span class="n">02.</span>Skills</a></li>
+    <li><a href="#contact"><span class="n">03.</span>Contact</a></li>
+  </ul>
+</div></nav>
 
 <main class="wrap">
-  <h2>Skills</h2>
-  <ul class="skills">
-    <li class="chip">NVIDIA Isaac Sim</li><li class="chip">Isaac ROS (cuVSLAM, nvblox)</li><li class="chip">ROS 2 Jazzy · Nav2</li>
-    <li class="chip">Jetson Orin</li><li class="chip">DeepStream · Multi-View 3D Tracking</li><li class="chip">Vision-Language Models</li>
-    <li class="chip">Isaac Gym · PPO</li><li class="chip">Point clouds · RANSAC</li><li class="chip">EPANET · OpenFOAM</li>
-    <li class="chip">Blender Python</li><li class="chip">URDF · OpenSCAD</li><li class="chip">Docker · Cloud GPU (Brev)</li>
-    <li class="chip">Python · C++ · TypeScript</li>
-  </ul>
-
-  <h2 id="projects">Projects</h2>
-  <div class="grid">
-
-    <article class="card">
-      <div class="duo"><img src="assets/rover_mission.jpg" alt="Simulated rover driving between warehouse racks"><img src="assets/rover_arm.jpg" alt="Rover with arm in a narrow warehouse aisle"></div>
-      <div class="body">
-        <h3>AMR digital twin: 18-inch aisle navigation</h3>
-        <p>An Isaac Sim twin of a 0.40 m skid-steer robot that drives autonomously through 45.7 cm warehouse aisles, with 2.86 cm clearance on each side, using only its own simulated sensors.</p>
-        <ul><li>3 of 3 missions with no contact, 0.9–1.9 cm max off-centre</li><li>RealSense D455 stereo + IMU, wheel odometry, EKF fusion</li><li>Arm pick-and-place demo; VLM aisle checks</li></ul>
-        <div class="chips"><span class="chip">Isaac Sim 5.1</span><span class="chip">cuVSLAM</span><span class="chip">nvblox</span><span class="chip">Nav2</span></div>
+  <header class="hero">
+    <div class="rv">
+      <p class="eyebrow mono">Hi, my name is</p>
+      <h1>Christopher Jose.</h1>
+      <h2>I build robots in <span class="grad">simulation</span>, then ship them to the <span class="grad">real world</span>.</h2>
+      <p>I'm a robotics &amp; AI engineer. I build Isaac Sim digital twins, autonomous navigation on Jetson, multi-camera vision analytics, humanoid reinforcement learning and scan-to-CAD pipelines.</p>
+      <div class="btns">
+        <a class="btn primary" href="#work">See my work</a>
+        <a class="btn" href="https://github.com/chrisjzac" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.3-.52-1.47.11-3.06 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.06.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.39-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>GitHub</a>
+        <!-- TODO: replace YOUR-LINKEDIN with your profile handle -->
+        <a class="btn" href="https://www.linkedin.com/in/YOUR-LINKEDIN" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>LinkedIn</a>
       </div>
-    </article>
+    </div>
+    <div class="frame rv">
+      <video src="assets/rover_mission.mp4" poster="assets/rover_mission.jpg" muted loop playsinline preload="none" aria-label="Simulated rover driving between warehouse racks"></video>
+      <span class="cap mono">Isaac Sim · autonomous mission</span>
+    </div>
+  </header>
 
-    <article class="card">
-      <img src="assets/vslam_bench.jpg" alt="Estimated vs true trajectory plots for three runs">
-      <div class="body">
-        <h3>Real-robot VSLAM on Jetson Orin</h3>
-        <p>Bring-up of the physical rover: visual SLAM, lidar, EKF and Nav2 on an Orin. I benchmarked several SLAM back-ends against taped ground truth and patched upstream drivers so the stack holds up in the field.</p>
-        <ul><li>cuVSLAM vs CudaSift vs GLIM benchmarks</li><li>IMU and camera calibration tooling</li><li>Ouster driver patch: lidar standby saves about 15 W</li></ul>
-        <div class="chips"><span class="chip">Jetson Orin</span><span class="chip">ROS 2</span><span class="chip">C++</span><span class="chip">Ouster OS1</span></div>
-      </div>
-    </article>
-
-    <article class="card">
-      <img src="assets/multicam.jpg" alt="Four-camera baggage hall analytics dashboard">
-      <div class="body">
-        <h3>Multi-camera airport analytics</h3>
-        <p>A simulated baggage-claim hall with a scripted crowd, filmed by 4 ceiling cameras. DeepStream gives each person one ID across every camera. A live dashboard shows metrics and alerts, and a VLM checks each incident.</p>
-        <ul><li>Occupancy, dwell, loitering, running, intrusion</li><li>Falls and unattended bags confirmed by Cosmos Reason 2</li></ul>
-        <div class="chips"><span class="chip">Isaac Sim</span><span class="chip">DeepStream 9</span><span class="chip">MV3DT</span><span class="chip">Cosmos Reason</span></div>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="duo"><img src="assets/ainex_real.jpg" alt="Humanoid robot in simulation"><img src="assets/ainex_pose.jpg" alt="Humanoid pose checks"></div>
-      <div class="body">
-        <h3>Humanoid locomotion with RL</h3>
-        <p>PPO walking policies for a small humanoid, trained in Isaac Gym, plus the kinematics, joint limits, inverse kinematics and actuation work needed to move them to the real robot and edge hardware.</p>
-        <div class="chips"><span class="chip">Isaac Gym</span><span class="chip">PPO</span><span class="chip">IK</span><span class="chip">Sim-to-real</span></div>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="duo"><img src="assets/twin_flow.jpg" alt="Pipe network coloured by flow"><img src="assets/pipe_render.jpg" alt="Blender render of pipes with water"></div>
-      <div class="body">
-        <h3>Piping digital twin studio</h3>
-        <p>A 3-million-point laser scan plus the P&amp;ID go in. Out come a measured 3D as-built model, tagged 2D CAD views, consistency checks and EPANET hydraulics, all in a dual-pane 2D/3D what-if editor. It also ships as a Blender add-on.</p>
-        <div class="chips"><span class="chip">Python</span><span class="chip">EPANET</span><span class="chip">three.js</span><span class="chip">Blender</span></div>
-      </div>
-    </article>
-
-    <article class="card">
-      <img src="assets/scan2cad.jpg" alt="Pipe CAD model fitted from a point cloud">
-      <div class="body">
-        <h3>Scan-to-CAD for pipe networks</h3>
-        <p>Fits a parametric FreeCAD BREP model to LiDAR or photogrammetry scans using slab slicing and RANSAC circle fitting. It has a live web viewer and an MCP server, so an LLM can drive the fit and an OpenFOAM flow run.</p>
-        <div class="chips"><span class="chip">RANSAC</span><span class="chip">FreeCAD</span><span class="chip">OpenFOAM</span><span class="chip">MCP</span></div>
-      </div>
-    </article>
-
-    <article class="card">
-      <img src="assets/gripper.jpg" alt="3D-printable two-finger gear claw">
-      <div class="body">
-        <h3>3D-printable gripper + URDF for Epson VT6L</h3>
-        <p>A two-finger claw for payloads up to 2.5 kg, made from two printed parts and one servo. Meshing involute sector gears make the fingers counter-rotate. Includes a generated URDF of the arm and claw for simulation and VLA training.</p>
-        <div class="chips"><span class="chip">OpenSCAD</span><span class="chip">URDF</span><span class="chip">Mechanical design</span></div>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="body">
-        <h3>Isaac Sim Brev Deployer (VS Code extension)</h3>
-        <p>A TypeScript VS Code extension that deploys NVIDIA Isaac Sim to a cloud GPU instance over SSH using Docker Compose. It replaced an older Gradio control panel and is tested with vitest.</p>
-        <div class="chips"><span class="chip">TypeScript</span><span class="chip">VS Code API</span><span class="chip">Docker</span></div>
-      </div>
-    </article>
-
+  <div class="stats rv">
+    <div class="stat"><b class="grad">2.86 cm</b><span>clearance per side in 18-inch aisles</span></div>
+    <div class="stat"><b class="grad">4 cams</b><span>tracked as one ID per person</span></div>
+    <div class="stat"><b class="grad">3M pts</b><span>laser scan → as-built CAD</span></div>
+    <div class="stat"><b class="grad">sim → real</b><span>Isaac Sim, Isaac Gym, Jetson Orin</span></div>
   </div>
-  <p class="note">Several projects were built for clients, so their code is private. Images are from my own simulation runs and renders.</p>
+
+  <section id="work">
+    <h2 class="sh rv"><span class="n mono">01.</span>Featured work</h2>
+
+    <article class="feat rv">
+      <div class="frame duo">
+        <video src="assets/rover_arm.mp4" poster="assets/rover_arm.jpg" muted loop playsinline preload="none" aria-label="Rover with an arm in a narrow aisle"></video>
+        <img src="assets/rover_mission.jpg" alt="Rover between warehouse racks" loading="lazy">
+      </div>
+      <div class="txt">
+        <p class="kind mono">Digital twin · Navigation</p>
+        <h3>AMR navigation through 18-inch aisles</h3>
+        <div class="desc"><p>An Isaac Sim twin of a 0.40 m skid-steer robot that drives itself through 45.7 cm warehouse aisles. It uses only its own simulated sensors; ground truth is used only to score each run.</p>
+          <ul><li>3 of 3 missions with no contact, 0.9–1.9 cm max off-centre</li><li>RealSense D455 stereo + IMU, wheel odometry, EKF fusion</li><li>Arm pick-and-place and VLM aisle-check demos</li></ul></div>
+        <ul class="tech mono"><li>Isaac Sim 5.1</li><li>cuVSLAM</li><li>nvblox</li><li>ROS 2 Nav2</li></ul>
+      </div>
+    </article>
+
+    <article class="feat flip rv">
+      <div class="frame"><video src="assets/multicam.mp4" poster="assets/multicam.jpg" muted loop playsinline preload="none" aria-label="Four-camera baggage hall analytics dashboard"></video></div>
+      <div class="txt">
+        <p class="kind mono">Computer vision · VLM</p>
+        <h3>Multi-camera airport analytics</h3>
+        <div class="desc"><p>A simulated baggage-claim hall with a scripted crowd, filmed by 4 ceiling cameras. DeepStream gives each person one ID across every camera. A live dashboard shows metrics and alerts, and a VLM checks each incident.</p>
+          <ul><li>Occupancy, dwell, loitering, running, intrusion</li><li>Falls and unattended bags confirmed by Cosmos Reason 2</li></ul></div>
+        <ul class="tech mono"><li>DeepStream 9</li><li>Multi-View 3D Tracking</li><li>Cosmos Reason</li><li>Isaac Sim</li></ul>
+      </div>
+    </article>
+
+    <article class="feat rv">
+      <div class="frame"><img src="assets/vslam_bench.jpg" alt="Estimated vs true trajectory plots for three runs" loading="lazy" style="object-fit:contain;background:#fff"></div>
+      <div class="txt">
+        <p class="kind mono">Edge robotics · SLAM</p>
+        <h3>Real-robot VSLAM on Jetson Orin</h3>
+        <div class="desc"><p>Bring-up of the physical rover: visual SLAM, lidar, EKF and Nav2 on an Orin. I benchmarked SLAM back-ends against taped ground truth and patched upstream drivers so the stack holds up in the field.</p>
+          <ul><li>cuVSLAM vs CudaSift vs GLIM benchmarks</li><li>IMU and camera calibration tooling</li><li>Ouster driver patch: lidar standby saves about 15 W</li></ul></div>
+        <ul class="tech mono"><li>Jetson Orin</li><li>ROS 2</li><li>C++</li><li>Ouster OS1</li></ul>
+      </div>
+    </article>
+
+    <article class="feat flip rv">
+      <div class="frame duo">
+        <video src="assets/ainex_real.mp4" poster="assets/ainex_real.jpg" muted loop playsinline preload="none" aria-label="Humanoid robot moving in simulation"></video>
+        <img src="assets/ainex_pose.jpg" alt="Humanoid pose checks" loading="lazy">
+      </div>
+      <div class="txt">
+        <p class="kind mono">Reinforcement learning</p>
+        <h3>Humanoid locomotion with RL</h3>
+        <div class="desc"><p>PPO walking policies for a small humanoid, trained in Isaac Gym. I also did the kinematics, joint-limit, inverse kinematics and actuation work needed to move them to the real robot and edge hardware.</p></div>
+        <ul class="tech mono"><li>Isaac Gym</li><li>PPO</li><li>IK</li><li>Sim-to-real</li></ul>
+      </div>
+    </article>
+
+    <article class="feat rv">
+      <div class="frame duo">
+        <img src="assets/twin_flow.jpg" alt="Pipe network coloured by flow" loading="lazy">
+        <img src="assets/pipe_render.jpg" alt="Blender render of pipes with water" loading="lazy">
+      </div>
+      <div class="txt">
+        <p class="kind mono">Digital twin · Hydraulics</p>
+        <h3>Piping digital twin studio</h3>
+        <div class="desc"><p>A 3-million-point laser scan plus the P&amp;ID go in. Out come a measured 3D as-built model, tagged 2D CAD views, consistency checks and EPANET hydraulics, all in a dual-pane 2D/3D what-if editor. It also ships as a Blender add-on.</p></div>
+        <ul class="tech mono"><li>Python</li><li>EPANET</li><li>three.js</li><li>Blender</li></ul>
+      </div>
+    </article>
+
+    <h3 class="rv" style="text-align:center;font-size:1.5rem;margin:0 0 28px">Other noteworthy projects</h3>
+    <div class="grid">
+      <article class="card rv">
+        <img src="assets/scan2cad.jpg" alt="Pipe CAD model fitted from a point cloud" loading="lazy">
+        <div class="body"><h3>Scan-to-CAD for pipe networks</h3>
+          <p>Fits a parametric FreeCAD BREP model to LiDAR or photogrammetry scans using slab slicing and RANSAC circle fitting. It has a live web viewer and an MCP server, so an LLM can drive the fit and an OpenFOAM flow run.</p>
+          <ul class="tech mono"><li>RANSAC</li><li>FreeCAD</li><li>OpenFOAM</li><li>MCP</li></ul></div>
+      </article>
+      <article class="card rv">
+        <img src="assets/gripper.jpg" alt="3D-printable two-finger gear claw" loading="lazy" style="background:#f1f0ec">
+        <div class="body"><h3>Printable gripper + URDF for Epson VT6L</h3>
+          <p>A two-finger claw for payloads up to 2.5 kg, made from two printed parts and one servo. Meshing involute sector gears make the fingers counter-rotate. Includes a generated URDF for simulation and VLA training.</p>
+          <ul class="tech mono"><li>OpenSCAD</li><li>URDF</li><li>Mechanical design</li></ul></div>
+      </article>
+      <article class="card rv">
+        <div class="ph mono" aria-hidden="true">&gt;_</div>
+        <div class="body"><h3>Isaac Sim Brev Deployer</h3>
+          <p>A TypeScript VS Code extension that deploys NVIDIA Isaac Sim to a cloud GPU instance over SSH using Docker Compose. It replaced an older Gradio control panel and is tested with vitest.</p>
+          <ul class="tech mono"><li>TypeScript</li><li>VS Code API</li><li>Docker</li></ul></div>
+      </article>
+    </div>
+    <p class="mono" style="color:var(--muted);font-size:.78rem;text-align:center;margin-top:24px">Several projects were built for clients, so their code is private. Media is from my own simulation runs and renders.</p>
+  </section>
+
+  <section id="skills">
+    <h2 class="sh rv"><span class="n mono">02.</span>Toolbox</h2>
+    <div class="skills">
+      <div class="rv"><h3 class="mono">Simulation</h3><ul><li>NVIDIA Isaac Sim</li><li>Isaac Gym · PPO</li><li>Isaac Replicator</li><li>Blender Python</li></ul></div>
+      <div class="rv"><h3 class="mono">Robotics</h3><ul><li>ROS 2 Jazzy · Nav2</li><li>cuVSLAM · nvblox</li><li>Jetson Orin</li><li>URDF · kinematics</li></ul></div>
+      <div class="rv"><h3 class="mono">Vision &amp; AI</h3><ul><li>DeepStream · MV3DT</li><li>Vision-Language Models</li><li>Point clouds · RANSAC</li><li>MCP / LLM tooling</li></ul></div>
+      <div class="rv"><h3 class="mono">Engineering</h3><ul><li>Python · C++ · TypeScript</li><li>Docker · Brev cloud GPUs</li><li>EPANET · OpenFOAM</li><li>OpenSCAD · FreeCAD</li></ul></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact rv">
+    <p class="mono" style="color:var(--accent);margin:0">03. What's next?</p>
+    <h2>Let's build something.</h2>
+    <p>If you're working on robots, digital twins or vision systems, I'd like to hear about it.</p>
+    <div class="btns"><a class="btn primary" href="mailto:christopher.jose@ignitarium.in">Say hello</a><a class="btn" href="https://github.com/chrisjzac">GitHub</a></div>
+  </section>
 </main>
 
-<footer><div class="wrap">© 2026 Christopher Jose</div></footer>
+<footer class="mono">Designed &amp; built by Christopher Jose · 2026</footer>
+
+<script>
+// Reveal on scroll; play clips only while visible (saves bandwidth) and never under reduced motion.
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const io = new IntersectionObserver(es => es.forEach(e => {
+  const t = e.target;
+  if (t.tagName === 'VIDEO') { if (still) return; e.isIntersecting ? t.play().catch(() => {}) : t.pause(); }
+  else if (e.isIntersecting) { t.classList.add('in'); io.unobserve(t); }
+}), { threshold: 0.15 });
+document.querySelectorAll('.rv, video').forEach(el => io.observe(el));
+</script>
 </body>
 </html>
