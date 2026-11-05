@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Christopher Jose — Robotics &amp; AI Engineer</title>
+<meta name="description" content="Portfolio of Christopher Jose: robotics simulation, autonomous navigation, multi-camera vision analytics, humanoid RL and digital twins.">
+<style>
+:root{--bg:#fafaf9;--fg:#1c1917;--muted:#57534e;--card:#fff;--line:#e7e5e4;--accent:#0f766e;--chip:#f0fdfa}
+@media (prefers-color-scheme:dark){:root{--bg:#0c0a09;--fg:#f5f5f4;--muted:#a8a29e;--card:#1c1917;--line:#292524;--accent:#2dd4bf;--chip:#042f2e}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header{padding:72px 0 40px;border-bottom:1px solid var(--line)}
+h1{font-size:clamp(2rem,5vw,3rem);margin:0 0 8px;letter-spacing:-.02em}
+.tag{font-size:1.15rem;color:var(--muted);max-width:720px;margin:0 0 20px}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.links a{padding:8px 14px;border:1px solid var(--line);border-radius:8px;text-decoration:none;background:var(--card)}
+h2{font-size:1.4rem;margin:48px 0 16px}
+.skills{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none;margin:0}
+.chip{display:inline-block;background:var(--chip);color:var(--accent);border-radius:999px;padding:3px 10px;font-size:.82rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.card img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:#111;border-bottom:1px solid var(--line)}
+.card .duo{display:grid;grid-template-columns:1fr 1fr}
+.card .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{margin:0;font-size:1.1rem}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.card ul{margin:0;padding-left:18px;color:var(--muted);font-size:.92rem}
+.card .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
+.note{font-size:.8rem;color:var(--muted)}
+footer{padding:48px 0;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line);margin-top:56px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Christopher Jose</h1>
+    <p class="tag">Robotics &amp; AI engineer. I build simulation-first robotics systems: Isaac Sim digital twins, autonomous navigation on Jetson, multi-camera vision analytics, humanoid reinforcement learning and scan-to-CAD pipelines.</p>
+    <nav class="links">
+      <!-- TODO: replace YOUR-LINKEDIN with your profile handle -->
+      <a href="https://github.com/chrisjzac">GitHub</a>
+      <a href="https://www.linkedin.com/in/YOUR-LINKEDIN">LinkedIn</a>
+      <a href="mailto:christopher.jose@ignitarium.in">Email</a>
+      <a href="#projects">Projects</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h2>Skills</h2>
+  <ul class="skills">
+    <li class="chip">NVIDIA Isaac Sim</li><li class="chip">Isaac ROS (cuVSLAM, nvblox)</li><li class="chip">ROS 2 Jazzy · Nav2</li>
+    <li class="chip">Jetson Orin</li><li class="chip">DeepStream · Multi-View 3D Tracking</li><li class="chip">Vision-Language Models</li>
+    <li class="chip">Isaac Gym · PPO</li><li class="chip">Point clouds · RANSAC</li><li class="chip">EPANET · OpenFOAM</li>
+    <li class="chip">Blender Python</li><li class="chip">URDF · OpenSCAD</li><li class="chip">Docker · Cloud GPU (Brev)</li>
+    <li class="chip">Python · C++ · TypeScript</li>
+  </ul>
+
+  <h2 id="projects">Projects</h2>
+  <div class="grid">
+
+    <article class="card">
+      <div class="duo"><img src="assets/rover_mission.jpg" alt="Simulated rover driving between warehouse racks"><img src="assets/rover_arm.jpg" alt="Rover with arm in a narrow warehouse aisle"></div>
+      <div class="body">
+        <h3>AMR digital twin: 18-inch aisle navigation</h3>
+        <p>An Isaac Sim twin of a 0.40 m skid-steer robot that drives autonomously through 45.7 cm warehouse aisles, with 2.86 cm clearance on each side, using only its own simulated sensors.</p>
+        <ul><li>3 of 3 missions with no contact, 0.9–1.9 cm max off-centre</li><li>RealSense D455 stereo + IMU, wheel odometry, EKF fusion</li><li>Arm pick-and-place demo; VLM aisle checks</li></ul>
+        <div class="chips"><span class="chip">Isaac Sim 5.1</span><span class="chip">cuVSLAM</span><span class="chip">nvblox</span><span class="chip">Nav2</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="assets/vslam_bench.jpg" alt="Estimated vs true trajectory plots for three runs">
+      <div class="body">
+        <h3>Real-robot VSLAM on Jetson Orin</h3>
+        <p>Bring-up of the physical rover: visual SLAM, lidar, EKF and Nav2 on an Orin. I benchmarked several SLAM back-ends against taped ground truth and patched upstream drivers so the stack holds up in the field.</p>
+        <ul><li>cuVSLAM vs CudaSift vs GLIM benchmarks</li><li>IMU and camera calibration tooling</li><li>Ouster driver patch: lidar standby saves about 15 W</li></ul>
+        <div class="chips"><span class="chip">Jetson Orin</span><span class="chip">ROS 2</span><span class="chip">C++</span><span class="chip">Ouster OS1</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="assets/multicam.jpg" alt="Four-camera baggage hall analytics dashboard">
+      <div class="body">
+        <h3>Multi-camera airport analytics</h3>
+        <p>A simulated baggage-claim hall with a scripted crowd, filmed by 4 ceiling cameras. DeepStream gives each person one ID across every camera. A live dashboard shows metrics and alerts, and a VLM checks each incident.</p>
+        <ul><li>Occupancy, dwell, loitering, running, intrusion</li><li>Falls and unattended bags confirmed by Cosmos Reason 2</li></ul>
+        <div class="chips"><span class="chip">Isaac Sim</span><span class="chip">DeepStream 9</span><span class="chip">MV3DT</span><span class="chip">Cosmos Reason</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="duo"><img src="assets/ainex_real.jpg" alt="Humanoid robot in simulation"><img src="assets/ainex_pose.jpg" alt="Humanoid pose checks"></div>
+      <div class="body">
+        <h3>Humanoid locomotion with RL</h3>
+        <p>PPO walking policies for a small humanoid, trained in Isaac Gym, plus the kinematics, joint limits, inverse kinematics and actuation work needed to move them to the real robot and edge hardware.</p>
+        <div class="chips"><span class="chip">Isaac Gym</span><span class="chip">PPO</span><span class="chip">IK</span><span class="chip">Sim-to-real</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="duo"><img src="assets/twin_flow.jpg" alt="Pipe network coloured by flow"><img src="assets/pipe_render.jpg" alt="Blender render of pipes with water"></div>
+      <div class="body">
+        <h3>Piping digital twin studio</h3>
+        <p>A 3-million-point laser scan plus the P&amp;ID go in. Out come a measured 3D as-built model, tagged 2D CAD views, consistency checks and EPANET hydraulics, all in a dual-pane 2D/3D what-if editor. It also ships as a Blender add-on.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">EPANET</span><span class="chip">three.js</span><span class="chip">Blender</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="assets/scan2cad.jpg" alt="Pipe CAD model fitted from a point cloud">
+      <div class="body">
+        <h3>Scan-to-CAD for pipe networks</h3>
+        <p>Fits a parametric FreeCAD BREP model to LiDAR or photogrammetry scans using slab slicing and RANSAC circle fitting. It has a live web viewer and an MCP server, so an LLM can drive the fit and an OpenFOAM flow run.</p>
+        <div class="chips"><span class="chip">RANSAC</span><span class="chip">FreeCAD</span><span class="chip">OpenFOAM</span><span class="chip">MCP</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="assets/gripper.jpg" alt="3D-printable two-finger gear claw">
+      <div class="body">
+        <h3>3D-printable gripper + URDF for Epson VT6L</h3>
+        <p>A two-finger claw for payloads up to 2.5 kg, made from two printed parts and one servo. Meshing involute sector gears make the fingers counter-rotate. Includes a generated URDF of the arm and claw for simulation and VLA training.</p>
+        <div class="chips"><span class="chip">OpenSCAD</span><span class="chip">URDF</span><span class="chip">Mechanical design</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="body">
+        <h3>Isaac Sim Brev Deployer (VS Code extension)</h3>
+        <p>A TypeScript VS Code extension that deploys NVIDIA Isaac Sim to a cloud GPU instance over SSH using Docker Compose. It replaced an older Gradio control panel and is tested with vitest.</p>
+        <div class="chips"><span class="chip">TypeScript</span><span class="chip">VS Code API</span><span class="chip">Docker</span></div>
+      </div>
+    </article>
+
+  </div>
+  <p class="note">Several projects were built for clients, so their code is private. Images are from my own simulation runs and renders.</p>
+</main>
+
+<footer><div class="wrap">© 2026 Christopher Jose</div></footer>
+</body>
+</html>
