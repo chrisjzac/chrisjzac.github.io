@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Christopher Jose — Robotics &amp; AI Engineer</title>
-<meta name="description" content="Portfolio of Christopher Jose: robotics simulation, autonomous navigation, multi-camera vision analytics, humanoid RL and digital twins.">
-<meta property="og:title" content="Christopher Jose — Robotics & AI Engineer">
+<title>Christopher Jose — Senior AI Robotics Engineer</title>
+<meta name="description" content="Portfolio of Christopher Jose, Senior AI Robotics Engineer at Ignitarium: perception, SLAM, edge AI, humanoid robots, autonomous mobile robots and digital twins.">
+<meta property="og:title" content="Christopher Jose — Senior AI Robotics Engineer">
 <meta property="og:image" content="assets/rover_mission.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,6 +108,21 @@ section{padding:72px 0 8px}
 .skills li{padding:4px 0;border-bottom:1px dashed var(--line)}
 .skills li:last-child{border:0}
 
+/* experience */
+.tl{list-style:none;margin:0 0 40px;padding:0 0 0 24px;border-left:2px solid var(--line);max-width:820px}
+.tl li{position:relative;padding:0 0 32px}
+.tl li::before{content:"";position:absolute;left:-31px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg)}
+.tl .when{color:var(--accent);font-size:.82rem;margin:0 0 4px}
+.tl h3{margin:0 0 8px;font-size:1.25rem}
+.tl h3 span{color:var(--accent)}
+.tl p{margin:0;color:var(--muted)}
+.edu{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.edu div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.edu h3{margin:0 0 12px;font-size:1rem;color:var(--accent)}
+.edu p{margin:0 0 12px;color:var(--muted);font-size:.92rem}
+.edu b{color:var(--fg);font-weight:600}
+@media (max-width:700px){.edu{grid-template-columns:1fr}}
+
 /* contact */
 .contact{text-align:center;padding:96px 0}
 .contact h2{font-size:clamp(2rem,5vw,3rem);margin:8px 0 16px}
@@ -143,8 +158,9 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
   <a class="logo" href="#">CJ<span>.</span></a>
   <ul class="mono">
     <li><a href="#work"><span class="n">01.</span>Work</a></li>
-    <li><a href="#skills"><span class="n">02.</span>Skills</a></li>
-    <li><a href="#contact"><span class="n">03.</span>Contact</a></li>
+    <li><a href="#experience"><span class="n">02.</span>Experience</a></li>
+    <li><a href="#skills"><span class="n">03.</span>Skills</a></li>
+    <li><a href="#contact"><span class="n">04.</span>Contact</a></li>
   </ul>
 </div></nav>
 
@@ -154,12 +170,11 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
       <p class="eyebrow mono">Hi, my name is</p>
       <h1>Christopher Jose.</h1>
       <h2>I build robots in <span class="grad">simulation</span>, then ship them to the <span class="grad">real world</span>.</h2>
-      <p>I'm a robotics &amp; AI engineer. I build Isaac Sim digital twins, autonomous navigation on Jetson, multi-camera vision analytics, humanoid reinforcement learning and scan-to-CAD pipelines.</p>
+      <p>I'm a Senior AI Robotics Engineer at Ignitarium in Kochi, India. I work across perception (detection, segmentation, pose estimation, 3D reconstruction), SLAM and edge AI, building humanoids, autonomous mobile robots, robot arms and the Isaac Sim digital twins that test them.</p>
       <div class="btns">
         <a class="btn primary" href="#work">See my work</a>
         <a class="btn" href="https://github.com/chrisjzac" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.3-.52-1.47.11-3.06 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.06.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.39-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>GitHub</a>
-        <!-- TODO: replace YOUR-LINKEDIN with your profile handle -->
-        <a class="btn" href="https://www.linkedin.com/in/YOUR-LINKEDIN" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>LinkedIn</a>
+        <a class="btn" href="https://www.linkedin.com/in/christopher--jose/" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>LinkedIn</a>
       </div>
     </div>
     <div class="frame rv">
@@ -169,10 +184,10 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
   </header>
 
   <div class="stats rv">
+    <div class="stat"><b class="grad">5 yrs</b><span>building AI robots at Ignitarium</span></div>
     <div class="stat"><b class="grad">2.86 cm</b><span>clearance per side in 18-inch aisles</span></div>
     <div class="stat"><b class="grad">4 cams</b><span>tracked as one ID per person</span></div>
-    <div class="stat"><b class="grad">3M pts</b><span>laser scan → as-built CAD</span></div>
-    <div class="stat"><b class="grad">sim → real</b><span>Isaac Sim, Isaac Gym, Jetson Orin</span></div>
+    <div class="stat"><b class="grad">3 shows</b><span>demos at EdgeTech+, Renesas AI Tech Day, VLSID</span></div>
   </div>
 
   <section id="work">
@@ -220,10 +235,11 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
         <img src="assets/ainex_pose.jpg" alt="Humanoid pose checks" loading="lazy">
       </div>
       <div class="txt">
-        <p class="kind mono">Reinforcement learning</p>
-        <h3>Humanoid locomotion with RL</h3>
-        <div class="desc"><p>PPO walking policies for a small humanoid, trained in Isaac Gym. I also did the kinematics, joint-limit, inverse kinematics and actuation work needed to move them to the real robot and edge hardware.</p></div>
-        <ul class="tech mono"><li>Isaac Gym</li><li>PPO</li><li>IK</li><li>Sim-to-real</li></ul>
+        <p class="kind mono">Humanoid · Edge AI · RL</p>
+        <h3>AI humanoid robot on Renesas RZ/V2H</h3>
+        <div class="desc"><p>A small humanoid that perceives, balances and responds to people, running its AI on the Renesas RZ/V2H edge chip.</p>
+          <ul><li>Gait control, hand-gesture actions and vision-based balancing</li><li>PPO walking policies trained in Isaac Gym, with IK and actuation work for sim-to-real</li><li>Demoed at EdgeTech+ 2024 and Renesas AI Tech Day (Yokohama), and VLSID 2025</li></ul></div>
+        <ul class="tech mono"><li>RZ/V2H</li><li>Isaac Gym</li><li>PPO</li><li>IK</li></ul>
       </div>
     </article>
 
@@ -255,6 +271,24 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
           <ul class="tech mono"><li>OpenSCAD</li><li>URDF</li><li>Mechanical design</li></ul></div>
       </article>
       <article class="card rv">
+        <div class="ph mono" aria-hidden="true">[ 3D ]</div>
+        <div class="body"><h3>Object 3D reconstruction for pick-and-place</h3>
+          <p>A high-precision industrial pick-and-place pipeline. YOLOv8 finds the part, SAM segments it, and RANSAC registration with ICP variants recovers its 3D pose from depth cameras like the Mech-Eye Nano. I also explored NeRF reconstruction and Template Pose and MegaPose for pose estimation.</p>
+          <ul class="tech mono"><li>YOLOv8</li><li>SAM</li><li>ICP</li><li>MegaPose</li></ul></div>
+      </article>
+      <article class="card rv">
+        <div class="ph mono" aria-hidden="true">((•))</div>
+        <div class="body"><h3>Robotic vacuum bot</h3>
+          <p>A ROS vacuum robot with 2D LiDAR SLAM and on-board object detection, optimized to run on the Renesas RZ/V2L edge platform.</p>
+          <ul class="tech mono"><li>ROS</li><li>2D LiDAR SLAM</li><li>RZ/V2L</li></ul></div>
+      </article>
+      <article class="card rv">
+        <div class="ph mono" aria-hidden="true">⟲ 6DOF</div>
+        <div class="body"><h3>SCARA arm pick-and-place</h3>
+          <p>Motion control and vision-guided object pick-and-place for a SCARA robot arm using ROS.</p>
+          <ul class="tech mono"><li>ROS</li><li>Motion control</li><li>Perception</li></ul></div>
+      </article>
+      <article class="card rv">
         <div class="ph mono" aria-hidden="true">&gt;_</div>
         <div class="body"><h3>Isaac Sim Brev Deployer</h3>
           <p>A TypeScript VS Code extension that deploys NVIDIA Isaac Sim to a cloud GPU instance over SSH using Docker Compose. It replaced an older Gradio control panel and is tested with vitest.</p>
@@ -264,18 +298,42 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
     <p class="mono" style="color:var(--muted);font-size:.78rem;text-align:center;margin-top:24px">Several projects were built for clients, so their code is private. Media is from my own simulation runs and renders.</p>
   </section>
 
+  <section id="experience">
+    <h2 class="sh rv"><span class="n mono">02.</span>Experience</h2>
+    <ol class="tl">
+      <li class="rv">
+        <p class="when mono">Jan 2025 — Present</p>
+        <h3>Senior AI Robotics Engineer <span>@ Ignitarium</span></h3>
+        <p>I build AI-powered robots on edge platforms like the Renesas RZ/V2H and lead projects on humanoids, autonomous drones, autonomous mobile robots and robot arms. My work covers object detection, pose estimation, 3D SLAM, VLMs and Isaac Sim digital twins.</p>
+      </li>
+      <li class="rv">
+        <p class="when mono">Nov 2021 — Jan 2025</p>
+        <h3>AI Engineer <span>@ Ignitarium</span></h3>
+        <p>I built detection models (YOLOv3/v5/v8), instance segmentation (SAM, PerSAM), pose estimation (Template Pose, MegaPose) and 3D reconstruction (RANSAC registration, ICP, NeRF). I also built ROS robots: a LiDAR-SLAM vacuum bot and a SCARA pick-and-place arm. I worked with depth cameras and embedded boards (Raspberry Pi, TI Jacinto, Renesas).</p>
+      </li>
+    </ol>
+    <div class="edu">
+      <div class="rv"><h3 class="mono">Education</h3>
+        <p><b>M.Tech, Computer</b><br>Rajagiri School of Engineering &amp; Technology · 2020–2022</p>
+        <p><b>B.Tech, Computer Science</b><br>Vellore Institute of Technology · 2013–2017</p></div>
+      <div class="rv"><h3 class="mono">Certifications</h3>
+        <p><b>Deep Learning Specialization</b><br>DeepLearning.AI · 2024</p>
+        <p><b>Electricity &amp; Electronics: Robotics, learn by building</b><br>Udemy · 2017</p></div>
+    </div>
+  </section>
+
   <section id="skills">
-    <h2 class="sh rv"><span class="n mono">02.</span>Toolbox</h2>
+    <h2 class="sh rv"><span class="n mono">03.</span>Toolbox</h2>
     <div class="skills">
-      <div class="rv"><h3 class="mono">Simulation</h3><ul><li>NVIDIA Isaac Sim</li><li>Isaac Gym · PPO</li><li>Isaac Replicator</li><li>Blender Python</li></ul></div>
-      <div class="rv"><h3 class="mono">Robotics</h3><ul><li>ROS 2 Jazzy · Nav2</li><li>cuVSLAM · nvblox</li><li>Jetson Orin</li><li>URDF · kinematics</li></ul></div>
-      <div class="rv"><h3 class="mono">Vision &amp; AI</h3><ul><li>DeepStream · MV3DT</li><li>Vision-Language Models</li><li>Point clouds · RANSAC</li><li>MCP / LLM tooling</li></ul></div>
-      <div class="rv"><h3 class="mono">Engineering</h3><ul><li>Python · C++ · TypeScript</li><li>Docker · Brev cloud GPUs</li><li>EPANET · OpenFOAM</li><li>OpenSCAD · FreeCAD</li></ul></div>
+      <div class="rv"><h3 class="mono">Perception &amp; AI</h3><ul><li>YOLO · SAM · PerSAM</li><li>Template Pose · MegaPose</li><li>3D reconstruction · ICP · NeRF</li><li>VLMs · DeepStream · MV3DT</li></ul></div>
+      <div class="rv"><h3 class="mono">Robotics &amp; Sim</h3><ul><li>ROS / ROS 2 · Nav2</li><li>SLAM · cuVSLAM · nvblox</li><li>Isaac Sim · Isaac Gym</li><li>URDF · kinematics</li></ul></div>
+      <div class="rv"><h3 class="mono">Edge &amp; Embedded</h3><ul><li>Renesas RZ/V2H · RZ/V2L</li><li>Jetson Orin · TI Jacinto · RPi</li><li>Yocto · Embedded Linux</li><li>RealSense · Mech-Eye · Ouster</li></ul></div>
+      <div class="rv"><h3 class="mono">Languages &amp; Tools</h3><ul><li>Python · C++ · Embedded C</li><li>TypeScript</li><li>Docker · cloud GPUs</li><li>Blender · OpenSCAD · FreeCAD</li></ul></div>
     </div>
   </section>
 
   <section id="contact" class="contact rv">
-    <p class="mono" style="color:var(--accent);margin:0">03. What's next?</p>
+    <p class="mono" style="color:var(--accent);margin:0">04. What's next?</p>
     <h2>Let's build something.</h2>
     <p>If you're working on robots, digital twins or vision systems, I'd like to hear about it.</p>
     <div class="btns"><a class="btn primary" href="mailto:christopher.jose@ignitarium.in">Say hello</a><a class="btn" href="https://github.com/chrisjzac">GitHub</a></div>
