@@ -41,10 +41,10 @@ h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:500;letter-spacing:-.01e
 
 /* hero */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 0 40px}
-.hero-grid{display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:center}
-.portrait{grid-column:2;grid-row:1;margin:0;position:relative}
-.portrait::before{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid var(--brown);border-radius:200px 200px 16px 16px}
-.portrait img{position:relative;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:200px 200px 16px 16px;box-shadow:var(--shadow);background:var(--sand)}
+.hero-grid{display:grid;grid-template-columns:1fr 180px;gap:48px;align-items:start}
+.portrait{grid-column:2;grid-row:1;margin:8px 10px 0 0;position:relative}
+.portrait::before{content:"";position:absolute;inset:8px -8px -8px 8px;border:1px solid var(--brown);border-radius:120px 120px 12px 12px}
+.portrait img{position:relative;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:120px 120px 12px 12px;box-shadow:var(--shadow);background:var(--sand)}
 .hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:400}
 .hero h1 em{font-style:italic;color:var(--brown)}
 .hero .lede{font-size:clamp(1.1rem,2vw,1.3rem);color:var(--muted);max-width:600px;margin:24px 0 36px}
@@ -114,8 +114,8 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
 
 @media (max-width:900px){
   .hero-grid{grid-template-columns:1fr;gap:36px}
-  .portrait{grid-column:1;width:170px}
-  .portrait::before{inset:10px -10px -10px 10px}
+  .portrait{grid-column:1;width:110px}
+  .portrait::before{inset:6px -6px -6px 6px}
 }
 @media (max-width:700px){
   body{font-size:16px}
@@ -162,10 +162,10 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
 
   <section class="chapter" id="see" data-ch>
     <div class="col">
-      <p class="label rv">Chapter one · 2021 – 2024</p>
+      <p class="label rv">Chapter one · June 2021 – 2024</p>
       <h2 class="rv">First, a robot has to see.</h2>
       <p class="big rv">Every robot I've worked on starts with the same question: what is in front of me, and where exactly is it?</p>
-      <p class="rv">As an AI Engineer I built that sense of sight piece by piece. I trained YOLO models to find objects, then used SAM and PerSAM to cut them cleanly from the scene. Template Pose and MegaPose estimated how each object was turned in space. RANSAC registration, ICP and NeRF rebuilt objects in 3D from depth cameras like the Mech-Eye Nano and RealSense.</p>
+      <p class="rv">I joined Ignitarium as an intern in June 2021 and moved to a full-time AI Engineer role that November. Over those years I built that sense of sight piece by piece. I trained YOLO models to find objects, then used SAM and PerSAM to cut them cleanly from the scene. Template Pose and MegaPose estimated how each object was turned in space. RANSAC registration, ICP and NeRF rebuilt objects in 3D from depth cameras like the Mech-Eye Nano and RealSense.</p>
       <p class="rv">Put together, these became a high-precision pick-and-place pipeline for industrial parts. Next came my first robots: a ROS vacuum bot that mapped rooms with 2D LiDAR SLAM, and a SCARA arm that picked and placed objects on its own.</p>
       <blockquote class="rv">Detect it, segment it, estimate its pose, rebuild it in 3D. Everything I've built since rests on those four steps.</blockquote>
       <ul class="tags rv"><li>YOLOv8</li><li>SAM · PerSAM</li><li>MegaPose</li><li>ICP · NeRF</li><li>ROS</li><li>2D LiDAR SLAM</li></ul>
@@ -277,7 +277,8 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <h2 class="rv">How I got here.</h2>
       <ol class="tl">
         <li class="rv"><span class="yr">2025 – now</span><div><h3>Senior Physical AI Engineer, Ignitarium</h3><p>I lead projects on humanoids, mobile robots, drones and robot arms on edge AI platforms, and build the Isaac Sim digital twins that test them.</p></div></li>
-        <li class="rv"><span class="yr">2021 – 2025</span><div><h3>AI Engineer, Ignitarium</h3><p>Detection, segmentation, pose estimation and 3D reconstruction, plus my first ROS robots.</p></div></li>
+        <li class="rv"><span class="yr">Nov 2021 – 2025</span><div><h3>AI Engineer, Ignitarium</h3><p>Detection, segmentation, pose estimation and 3D reconstruction, plus my first ROS robots.</p></div></li>
+        <li class="rv"><span class="yr">Jun – Nov 2021</span><div><h3>Intern, Ignitarium</h3><p>Where the story starts.</p></div></li>
         <li class="rv"><span class="yr">2020 – 2022</span><div><h3>M.Tech, Computer</h3><p>Rajagiri School of Engineering &amp; Technology</p></div></li>
         <li class="rv"><span class="yr">2013 – 2017</span><div><h3>B.Tech, Computer Science</h3><p>Vellore Institute of Technology</p></div></li>
         <li class="rv"><span class="yr">Certifications</span><div><h3>Deep Learning Specialization</h3><p>DeepLearning.AI, 2024 · plus Electricity &amp; Electronics: Robotics (Udemy, 2017)</p></div></li>
