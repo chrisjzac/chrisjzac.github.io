@@ -40,12 +40,12 @@ h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:500;letter-spacing:-.01e
 .wide{max-width:1040px;margin:0 auto;padding:0 20px}
 
 /* hero */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 0 40px}
-.hero-grid{display:grid;grid-template-columns:1fr 180px;gap:48px;align-items:start}
-.portrait{grid-column:2;grid-row:1;margin:8px 10px 0 0;position:relative}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 20px 40px}
+.hero-grid{display:grid;grid-template-columns:1fr 150px;gap:40px;align-items:start}
+.portrait{grid-column:2;grid-row:1;margin:8px 8px 0 0;position:relative}
 .portrait::before{content:"";position:absolute;inset:-8px;border:1px solid var(--brown);border-radius:50%}
 .portrait img{position:relative;width:100%;height:auto;aspect-ratio:1;object-fit:cover;object-position:50% 50%;border-radius:50%;box-shadow:var(--shadow);background:var(--sand)}
-.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:400}
+.hero h1{font-size:clamp(2.4rem,5.5vw,3.9rem);font-weight:400}
 .hero h1 em{font-style:italic;color:var(--brown)}
 .hero .lede{font-size:clamp(1.1rem,2vw,1.3rem);color:var(--muted);max-width:600px;margin:24px 0 36px}
 .links{display:flex;flex-wrap:wrap;gap:12px}
@@ -143,7 +143,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
 </ul>
 
 <main>
-  <header class="hero wide" id="start" data-ch>
+  <header class="hero col" id="start" data-ch>
    <div class="hero-grid">
     <figure class="portrait rv"><img src="assets/portrait.jpg" alt="Portrait of Christopher Jose" width="310" height="310"></figure>
     <div>
