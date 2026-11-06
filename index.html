@@ -168,6 +168,14 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <h2 class="rv">First, a robot has to see.</h2>
       <p class="big rv">Every robot I've worked on starts with the same question: what is in front of me, and where exactly is it?</p>
       <p class="rv">I joined Ignitarium as an intern in June 2021 and moved to a full-time AI Engineer role that November. My first projects were pure vision: spotting defects on printed circuit boards, a driver-monitoring system that watches for drowsiness and distraction, and a camera that finds faces and follows them.</p>
+    </div>
+    <div class="wide">
+      <figure class="rv">
+        <div class="frame"><video src="assets/pcb.mp4" poster="assets/pcb.jpg" muted loop playsinline preload="none" aria-label="A robot arm sweeps a camera over a circuit board while detections appear on screen"></video></div>
+        <figcaption>PCB defect detection: an arm-mounted camera inspects a board, component by component (sped up).</figcaption>
+      </figure>
+    </div>
+    <div class="col">
       <p class="rv">Then the vision had to reach into 3D. A proof of concept with an Intel RealSense and GraspNet showed a robot where to grip. For a client, I built a full pick-and-place pipeline: YOLOv8 finds the part, SAM segments it, Template Pose estimates its 6D pose, and my own 3D reconstruction suite, built on RANSAC and ICP, rebuilds it from depth cameras like the Mech-Eye Nano.</p>
       <blockquote class="rv">Detect it, segment it, estimate its pose, rebuild it in 3D. Everything I've built since rests on those four steps.</blockquote>
       <p class="rv">I wrote about part of it too: "In the Pursuit of Finding Depth", a two-part explainer on how a single camera can learn to estimate depth.</p>
@@ -181,8 +189,20 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <h2 class="rv">Then, teach it to find its way.</h2>
       <p class="big rv">Once a robot can see, it has to know where it is, and get somewhere without hitting anything.</p>
       <p class="rv">I built a robot vacuum on ROS 2 that maps a home with 2D LiDAR SLAM and spots obstacles with object detection, all running on the customer's own single-board computer. Outdoors, I worked on a delivery robot that maps its surroundings with 3D LiDAR SLAM, and benchmarked FAST-LIO2, Faster-LIO and LIMO-Velo to choose the right mapping engine.</p>
+      <p class="rv">Then the two halves met. On a Renesas R-Car V4H, I put a robot arm on a mobile base: it maps the floor with 2D LiDAR SLAM, drives itself to the pick location, picks the object with AI-accelerated detection and drops it off at the target.</p>
+    </div>
+    <div class="wide">
+      <figure class="pair rv">
+        <div class="frame">
+          <video src="assets/vacuum.mp4" poster="assets/vacuum.jpg" muted loop playsinline preload="none" aria-label="Robot vacuum navigating a tiled floor beside its live map"></video>
+          <video src="assets/mobile_manip.mp4" poster="assets/mobile_manip.jpg" muted loop playsinline preload="none" aria-label="Mobile robot with an arm driving to a shelf, picking an object and dropping it off"></video>
+        </div>
+        <figcaption>The robot vacuum on Renesas RZ/V2H navigating on its own map (left), and the R-Car V4H mobile manipulator's autonomous pick and drop (right). Both sped up.</figcaption>
+      </figure>
+    </div>
+    <div class="col">
       <p class="rv">Not everything was software. For a robot-arm client I designed the gripper in 3D and built its actuation mechanism and electronics myself.</p>
-      <ul class="tags rv"><li>ROS 2</li><li>2D LiDAR SLAM</li><li>3D LiDAR SLAM</li><li>FAST-LIO2</li><li>Gripper design</li><li>Embedded boards</li></ul>
+      <ul class="tags rv"><li>ROS 2</li><li>2D LiDAR SLAM</li><li>3D LiDAR SLAM</li><li>FAST-LIO2</li><li>Mobile manipulation</li><li>R-Car V4H</li><li>Gripper design</li></ul>
     </div>
   </section>
 
@@ -216,8 +236,8 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
     </div>
     <div class="wide">
       <figure class="rv">
-        <div class="frame"><img src="assets/moveit_rzv2h.jpg" alt="A robot arm controlled through MoveIt on the Renesas RZ/V2H" loading="lazy"></div>
-        <figcaption>MoveIt demonstration on RZ/V2H, featured on Renesas' RZ/V AI community page.</figcaption>
+        <div class="frame"><video src="assets/moveit.mp4" poster="assets/moveit.jpg" muted loop playsinline preload="none" aria-label="A robot arm moving under MoveIt control, mirrored live in RViz"></video></div>
+        <figcaption>MoveIt 2 on the RZ/V2H: the arm follows the plan shown live in RViz. Featured on Renesas' RZ/V AI community page.</figcaption>
       </figure>
     </div>
     <div class="col">
@@ -235,8 +255,16 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <p class="label rv">Chapter four · In the air</p>
       <h2 class="rv">Then, take it into the sky.</h2>
       <p class="big rv">The same edge chip that balances a humanoid can fly a drone.</p>
-      <p class="rv">For search and rescue, I built a drone around the Renesas RZ/V2H on a Kakip board. A PX4 flight controller keeps it in the air; ROS 2 on the Kakip handles teleoperation and takes GPS waypoints from a base station; and a YOLOX and MobileNet-SSD person detector, accelerated on DRP-AI, reports anyone it finds over a cellular link. A second drone used the same idea to inspect railway sleepers for defects from above.</p>
-      <ul class="tags rv"><li>Renesas RZ/V2H</li><li>Kakip</li><li>PX4</li><li>ROS 2</li><li>GPS navigation</li><li>DRP-AI</li></ul>
+      <p class="rv">For search and rescue, I built a drone around the Renesas RZ/V2H on a Kakip board. A PX4 flight controller keeps it in the air; ROS 2 on the Kakip handles teleoperation and takes GPS waypoints from a base station; and a YOLOX and MobileNet-SSD person detector, accelerated on DRP-AI, reports anyone it finds over a cellular link. A second drone, a custom Holybro build on a Qualcomm RB3 Gen 2, flies over rail yards, picks out each track and flags defective sleepers from above.</p>
+    </div>
+    <div class="wide">
+      <figure class="rv">
+        <div class="frame"><video src="assets/rail_drone.mp4" poster="assets/rail_drone.jpg" muted loop playsinline preload="none" aria-label="Drone flying, then aerial footage of rail tracks with sleepers outlined"></video></div>
+        <figcaption>The rail-inspection drone in flight, then multi-track and sleeper defect detection from the air (sped up).</figcaption>
+      </figure>
+    </div>
+    <div class="col">
+      <ul class="tags rv"><li>Renesas RZ/V2H</li><li>Kakip</li><li>PX4</li><li>ROS 2</li><li>GPS navigation</li><li>DRP-AI</li><li>Qualcomm RB3</li></ul>
     </div>
   </section>
 
