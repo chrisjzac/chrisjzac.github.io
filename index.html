@@ -43,8 +43,8 @@ h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:500;letter-spacing:-.01e
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 0 40px}
 .hero-grid{display:grid;grid-template-columns:1fr 180px;gap:48px;align-items:start}
 .portrait{grid-column:2;grid-row:1;margin:8px 10px 0 0;position:relative}
-.portrait::before{content:"";position:absolute;inset:8px -8px -8px 8px;border:1px solid var(--brown);border-radius:120px 120px 12px 12px}
-.portrait img{position:relative;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:120px 120px 12px 12px;box-shadow:var(--shadow);background:var(--sand)}
+.portrait::before{content:"";position:absolute;inset:-8px;border:1px solid var(--brown);border-radius:50%}
+.portrait img{position:relative;width:100%;height:auto;aspect-ratio:1;object-fit:cover;object-position:50% 50%;border-radius:50%;box-shadow:var(--shadow);background:var(--sand)}
 .hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:400}
 .hero h1 em{font-style:italic;color:var(--brown)}
 .hero .lede{font-size:clamp(1.1rem,2vw,1.3rem);color:var(--muted);max-width:600px;margin:24px 0 36px}
@@ -115,7 +115,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
 @media (max-width:900px){
   .hero-grid{grid-template-columns:1fr;gap:36px}
   .portrait{grid-column:1;width:110px}
-  .portrait::before{inset:6px -6px -6px 6px}
+  .portrait::before{inset:-6px}
 }
 @media (max-width:700px){
   body{font-size:16px}
@@ -145,7 +145,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
 <main>
   <header class="hero wide" id="start" data-ch>
    <div class="hero-grid">
-    <figure class="portrait rv"><img src="assets/portrait.jpg" alt="Portrait of Christopher Jose" width="480" height="480"></figure>
+    <figure class="portrait rv"><img src="assets/portrait.jpg" alt="Portrait of Christopher Jose" width="310" height="310"></figure>
     <div>
     <p class="label rv">Christopher Jose · Senior Physical AI Engineer</p>
     <h1 class="rv">I teach robots to <em>see</em>, to <em>move</em>, and to find their way.</h1>
