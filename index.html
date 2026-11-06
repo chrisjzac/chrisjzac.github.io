@@ -134,7 +134,9 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
 <ul class="rail" aria-label="Chapters">
   <li><a href="#start">Prologue</a></li>
   <li><a href="#see">Learning to see</a></li>
+  <li><a href="#move">Robots that move</a></li>
   <li><a href="#body">A body to act</a></li>
+  <li><a href="#sky">Into the sky</a></li>
   <li><a href="#sim">Proving it in sim</a></li>
   <li><a href="#real">Into the real world</a></li>
   <li><a href="#build">Things I build</a></li>
@@ -162,22 +164,34 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
 
   <section class="chapter" id="see" data-ch>
     <div class="col">
-      <p class="label rv">Chapter one · June 2021 – 2024</p>
+      <p class="label rv">Chapter one · June 2021 – 2023</p>
       <h2 class="rv">First, a robot has to see.</h2>
       <p class="big rv">Every robot I've worked on starts with the same question: what is in front of me, and where exactly is it?</p>
-      <p class="rv">I joined Ignitarium as an intern in June 2021 and moved to a full-time AI Engineer role that November. Over those years I built that sense of sight piece by piece. I trained YOLO models to find objects, then used SAM and PerSAM to cut them cleanly from the scene. Template Pose and MegaPose estimated how each object was turned in space. RANSAC registration, ICP and NeRF rebuilt objects in 3D from depth cameras like the Mech-Eye Nano and RealSense.</p>
-      <p class="rv">Put together, these became a high-precision pick-and-place pipeline for industrial parts. Next came my first robots: a ROS vacuum bot that mapped rooms with 2D LiDAR SLAM, and a SCARA arm that picked and placed objects on its own.</p>
+      <p class="rv">I joined Ignitarium as an intern in June 2021 and moved to a full-time AI Engineer role that November. My first projects were pure vision: spotting defects on printed circuit boards, a driver-monitoring system that watches for drowsiness and distraction, and a camera that finds faces and follows them.</p>
+      <p class="rv">Then the vision had to reach into 3D. A proof of concept with an Intel RealSense and GraspNet showed a robot where to grip. For a client, I built a full pick-and-place pipeline: YOLOv8 finds the part, SAM segments it, Template Pose estimates its 6D pose, and my own 3D reconstruction suite, built on RANSAC and ICP, rebuilds it from depth cameras like the Mech-Eye Nano.</p>
       <blockquote class="rv">Detect it, segment it, estimate its pose, rebuild it in 3D. Everything I've built since rests on those four steps.</blockquote>
-      <ul class="tags rv"><li>YOLOv8</li><li>SAM · PerSAM</li><li>MegaPose</li><li>ICP · NeRF</li><li>ROS</li><li>2D LiDAR SLAM</li></ul>
+      <p class="rv">I wrote about part of it too: "In the Pursuit of Finding Depth", a two-part explainer on how a single camera can learn to estimate depth.</p>
+      <ul class="tags rv"><li>YOLOv8</li><li>SAM · PerSAM</li><li>Template Pose · MegaPose</li><li>GraspNet</li><li>ICP · RANSAC · NeRF</li><li>Defect detection</li><li>Driver monitoring</li></ul>
+    </div>
+  </section>
+
+  <section class="chapter" id="move" data-ch>
+    <div class="col">
+      <p class="label rv">Chapter two · Navigation</p>
+      <h2 class="rv">Then, teach it to find its way.</h2>
+      <p class="big rv">Once a robot can see, it has to know where it is, and get somewhere without hitting anything.</p>
+      <p class="rv">I built a robot vacuum on ROS 2 that maps a home with 2D LiDAR SLAM and spots obstacles with object detection, all running on the customer's own single-board computer. Outdoors, I worked on a delivery robot that maps its surroundings with 3D LiDAR SLAM, and benchmarked FAST-LIO2, Faster-LIO and LIMO-Velo to choose the right mapping engine.</p>
+      <p class="rv">Not everything was software. For a robot-arm client I designed the gripper in 3D and built its actuation mechanism and electronics myself.</p>
+      <ul class="tags rv"><li>ROS 2</li><li>2D LiDAR SLAM</li><li>3D LiDAR SLAM</li><li>FAST-LIO2</li><li>Gripper design</li><li>Embedded boards</li></ul>
     </div>
   </section>
 
   <section class="chapter" id="body" data-ch>
     <div class="col">
-      <p class="label rv">Chapter two · 2024 – 2025</p>
+      <p class="label rv">Chapter three · 2024 – 2025</p>
       <h2 class="rv">Then, give it a body.</h2>
       <p class="big rv">Seeing is only half of it. The real test is a robot that balances, walks and responds to the person in front of it.</p>
-      <p class="rv">On a small humanoid, I built gait control, hand-gesture actions and vision-based balancing that run on the Renesas RZ/V2H edge chip, with no cloud and no workstation. I trained walking policies with reinforcement learning (PPO) in Isaac Gym, then worked through the kinematics, joint limits and actuation needed to carry them over to the real robot.</p>
+      <p class="rv">On a small humanoid, I built gait control, hand-gesture actions and vision-based balancing that run on the Renesas RZ/V2H edge chip, with no cloud and no workstation. Face detection, object detection and obstacle avoidance run on the chip's DRP-AI accelerator. To keep it steady, I used ORB-SLAM2 camera pose as a balance signal, which corrects the drift an IMU alone suffers. I also trained walking policies with reinforcement learning (PPO) in Isaac Gym, then worked through the kinematics, joint limits and actuation needed to carry them over to the real robot.</p>
     </div>
     <div class="col">
       <p class="label rv" style="margin-top:56px">On the road</p>
@@ -216,9 +230,19 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
     </div>
   </section>
 
+  <section class="chapter" id="sky" data-ch>
+    <div class="col">
+      <p class="label rv">Chapter four · In the air</p>
+      <h2 class="rv">Then, take it into the sky.</h2>
+      <p class="big rv">The same edge chip that balances a humanoid can fly a drone.</p>
+      <p class="rv">For search and rescue, I built a drone around the Renesas RZ/V2H on a Kakip board. A PX4 flight controller keeps it in the air; ROS 2 on the Kakip handles teleoperation and takes GPS waypoints from a base station; and a YOLOX and MobileNet-SSD person detector, accelerated on DRP-AI, reports anyone it finds over a cellular link. A second drone used the same idea to inspect railway sleepers for defects from above.</p>
+      <ul class="tags rv"><li>Renesas RZ/V2H</li><li>Kakip</li><li>PX4</li><li>ROS 2</li><li>GPS navigation</li><li>DRP-AI</li></ul>
+    </div>
+  </section>
+
   <section class="chapter" id="sim" data-ch>
     <div class="col">
-      <p class="label rv">Chapter three · 2025</p>
+      <p class="label rv">Chapter five · 2025</p>
       <h2 class="rv">Prove it in simulation first.</h2>
       <p class="big rv">Hardware is slow to change and expensive to break. So I started building the world before building the robot.</p>
       <p class="rv">In NVIDIA Isaac Sim I built a digital twin of a 0.40 m warehouse robot and gave it a hard target: drive through 18-inch (45.7 cm) aisles, with only 2.86 cm to spare on each side. It uses only what the real robot would have: a RealSense D455's stereo cameras and IMU, plus wheel odometry, fused through cuVSLAM, nvblox and Nav2. The simulator's ground truth is used only to score each run.</p>
@@ -251,7 +275,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
 
   <section class="chapter" id="real" data-ch>
     <div class="col">
-      <p class="label rv">Chapter four · 2025 – today</p>
+      <p class="label rv">Chapter six · 2025 – today</p>
       <h2 class="rv">Then take it into the real world.</h2>
       <p class="big rv">A twin is only worth something if the real robot behaves the same way.</p>
       <p class="rv">I brought up the physical robot on an NVIDIA Jetson Orin with the same stack: visual SLAM, a 3D lidar, an EKF and Nav2. To choose the right SLAM back-end I compared cuVSLAM, CudaSift and GLIM against taped ground truth on the floor. I wrote calibration tools for the IMU and cameras. I also patched the Ouster lidar driver so the sensor can sleep when it isn't needed, saving about 15 W of the robot's battery.</p>
@@ -304,6 +328,8 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
         <li class="rv"><span class="yr">2020 – 2022</span><div><h3>M.Tech, Computer</h3><p>Rajagiri School of Engineering &amp; Technology</p></div></li>
         <li class="rv"><span class="yr">2013 – 2017</span><div><h3>B.Tech, Computer Science</h3><p>Vellore Institute of Technology</p></div></li>
         <li class="rv"><span class="yr">Certifications</span><div><h3>Deep Learning Specialization</h3><p>DeepLearning.AI, 2024 · plus Electricity &amp; Electronics: Robotics (Udemy, 2017)</p></div></li>
+        <li class="rv"><span class="yr">Publication</span><div><h3>A Hybrid Method for Diabetic Retinopathy Diagnosis through Blood Vessel Extraction and Exudates Identification from 2D Fundus Image</h3><p>Research Journal of Pharmacy and Technology</p></div></li>
+        <li class="rv"><span class="yr">Writing &amp; teaching</span><div><h3>"In the Pursuit of Finding Depth"</h3><p>A two-part blog on monocular depth estimation, plus an internal ROS 2 curriculum and a Docker introduction for colleagues.</p></div></li>
       </ol>
       <div class="skills">
         <div class="rv"><h3>Perception &amp; AI</h3><p>YOLO, SAM, MegaPose, 3D reconstruction, NeRF, vision-language models, DeepStream</p></div>
