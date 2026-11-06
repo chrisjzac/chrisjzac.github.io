@@ -256,6 +256,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <h2 class="rv">Then, take it into the sky.</h2>
       <p class="big rv">The same edge chip that balances a humanoid can fly a drone.</p>
       <p class="rv">For search and rescue, I built a drone around the Renesas RZ/V2H on a Kakip board. A PX4 flight controller keeps it in the air; ROS 2 on the Kakip handles teleoperation and takes GPS waypoints from a base station; and a YOLOX and MobileNet-SSD person detector, accelerated on DRP-AI, reports anyone it finds over a cellular link. A second drone, a custom Holybro build on a Qualcomm RB3 Gen 2, flies over rail yards, picks out each track and flags defective sleepers from above.</p>
+      <p class="rv">Indoors there is no GPS, so a third drone had to map its own way. For warehouse inventory, it pairs a Pixhawk running ArduPilot with a Raspberry Pi 5, and localises with RTAB-Map on a RealSense camera, a TF Mini Plus LiDAR and optical flow. MAVROS links ROS 2 to the flight controller, so the drone can take off, follow waypoints down the aisles, scan QR-coded stock and land safely. The whole stack ships in Docker, so every drone in a fleet runs the same software.</p>
     </div>
     <div class="wide">
       <figure class="rv">
@@ -264,7 +265,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       </figure>
     </div>
     <div class="col">
-      <ul class="tags rv"><li>Renesas RZ/V2H</li><li>Kakip</li><li>PX4</li><li>ROS 2</li><li>GPS navigation</li><li>DRP-AI</li><li>Qualcomm RB3</li></ul>
+      <ul class="tags rv"><li>Renesas RZ/V2H</li><li>Kakip</li><li>PX4</li><li>ROS 2</li><li>GPS navigation</li><li>DRP-AI</li><li>Qualcomm RB3</li><li>ArduPilot</li><li>RTAB-Map</li><li>Docker</li></ul>
     </div>
   </section>
 
