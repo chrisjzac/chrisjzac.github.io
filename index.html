@@ -164,7 +164,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
 
   <section class="chapter" id="see" data-ch>
     <div class="col">
-      <p class="label rv">Chapter one · June 2021 – 2023</p>
+      <p class="label rv">Chapter one · June 2021 – early 2024</p>
       <h2 class="rv">First, a robot has to see.</h2>
       <p class="big rv">Every robot I've worked on starts with the same question: what is in front of me, and where exactly is it?</p>
       <p class="rv">I joined Ignitarium as an intern in June 2021 and moved to a full-time AI Engineer role that November. My first projects were pure vision: spotting defects on printed circuit boards, a driver-monitoring system that watches for drowsiness and distraction, and a camera that finds faces and follows them.</p>
@@ -176,7 +176,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       </figure>
     </div>
     <div class="col">
-      <p class="rv">Then the vision had to reach into 3D. A proof of concept with an Intel RealSense and GraspNet showed a robot where to grip. For a client, I built a full pick-and-place pipeline: YOLOv8 finds the part, SAM segments it, Template Pose estimates its 6D pose, and my own 3D reconstruction suite, built on RANSAC and ICP, rebuilds it from depth cameras like the Mech-Eye Nano.</p>
+      <p class="rv">Then the vision had to reach into 3D. A proof of concept with an Intel RealSense and GraspNet showed a robot where to grip. For a client, I built a full pick-and-place pipeline: YOLOv8 finds the part, SAM segments it, Template Pose estimates its 6D pose, and my own 3D reconstruction suite, built on RANSAC and ICP, rebuilds it from depth cameras like the Mech-Eye Nano, first with a turntable and then without one.</p>
       <blockquote class="rv">Detect it, segment it, estimate its pose, rebuild it in 3D. Everything I've built since rests on those four steps.</blockquote>
       <p class="rv">I wrote about part of it too: "In the Pursuit of Finding Depth", a two-part explainer on how a single camera can learn to estimate depth.</p>
       <ul class="tags rv"><li>YOLOv8</li><li>SAM · PerSAM</li><li>Template Pose · MegaPose</li><li>GraspNet</li><li>ICP · RANSAC · NeRF</li><li>Defect detection</li><li>Driver monitoring</li></ul>
@@ -201,8 +201,9 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       </figure>
     </div>
     <div class="col">
-      <p class="rv">Not everything was software. For a robot-arm client I designed the gripper in 3D and built its actuation mechanism and electronics myself.</p>
-      <ul class="tags rv"><li>ROS 2</li><li>2D LiDAR SLAM</li><li>3D LiDAR SLAM</li><li>FAST-LIO2</li><li>Mobile manipulation</li><li>R-Car V4H</li><li>Gripper design</li></ul>
+      <p class="rv">Localisation itself can be made faster. For a hardware-acceleration study, I rewrote the particle-filter resampling in Nav2's AMCL as a standalone module designed to map onto an FPGA.</p>
+      <p class="rv">Not everything was software. For a robot-arm client I designed the gripper in 3D, built its actuation mechanism and electronics myself, and wrote the arm's SPEL controller code with software limits and a safe reset.</p>
+      <ul class="tags rv"><li>ROS 2</li><li>2D LiDAR SLAM</li><li>3D LiDAR SLAM</li><li>FAST-LIO2</li><li>Mobile manipulation</li><li>R-Car V4H</li><li>Gripper design</li><li>Nav2 AMCL</li></ul>
     </div>
   </section>
 
@@ -211,7 +212,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <p class="label rv">Chapter three · 2024 – 2025</p>
       <h2 class="rv">Then, give it a body.</h2>
       <p class="big rv">Seeing is only half of it. The real test is a robot that balances, walks and responds to the person in front of it.</p>
-      <p class="rv">On a small humanoid, I built gait control, hand-gesture actions and vision-based balancing that run on the Renesas RZ/V2H edge chip, with no cloud and no workstation. Face detection, object detection and obstacle avoidance run on the chip's DRP-AI accelerator. To keep it steady, I used ORB-SLAM2 camera pose as a balance signal, which corrects the drift an IMU alone suffers. I also trained walking policies with reinforcement learning (PPO) in Isaac Gym, then worked through the kinematics, joint limits and actuation needed to carry them over to the real robot.</p>
+      <p class="rv">On a small humanoid, I built gait control, hand-gesture actions and vision-based balancing that run on the Renesas RZ/V2H edge chip, with no cloud and no workstation. Face detection, object detection and obstacle avoidance run on the chip's DRP-AI accelerator. To keep it steady, I used ORB-SLAM2 camera pose as a balance signal, which corrects the drift an IMU alone suffers. I also trained walking policies with reinforcement learning (PPO) in Isaac Gym, then worked through the kinematics, joint limits and actuation needed to carry them over to the real robot. Hand movements were prototyped first in PyBullet, and I built the Yocto images the chip boots.</p>
     </div>
     <div class="col">
       <p class="label rv" style="margin-top:56px">On the road</p>
@@ -232,7 +233,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
     </div>
     <div class="col">
       <p class="label rv" style="margin-top:56px">An arm of its own</p>
-      <p class="rv">The same edge-first thinking went into a robot arm I built. I moved a collaborative arm off its original Raspberry Pi so it runs on the RZ/V2H EVK, with ROS 2 Humble and MoveIt planning its motion and controlling the motors on the board. From a PC on the same network you can see the arm and move it. Renesas features it on its RZ/V AI partner community page as a starting point for robot-arm projects on the chip, and the code is open source.</p>
+      <p class="rv">The same edge-first thinking went into a robot arm I built. I moved a collaborative arm off its original Raspberry Pi so it runs on the RZ/V2H EVK, with ROS 2 Humble and MoveIt planning its motion and controlling the motors on the board. From a PC on the same network you can see the arm and move it. Renesas features it on its RZ/V AI partner community page as a starting point for robot-arm projects on the chip, and the code is open source. Before it touched hardware, I modelled the arm in PyBullet with a GUI for joint control, and packaged the MoveIt 2 workspace in Docker with CI.</p>
     </div>
     <div class="wide">
       <figure class="rv">
@@ -246,7 +247,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
         <a class="btn" href="https://www.youtube.com/watch?v=HjqAedMYx1M">Watch the demo</a>
         <a class="btn" href="https://renesas-rz.github.io/rzv_ai_sdk/latest/community.html">Renesas community page</a>
       </div>
-      <ul class="tags rv"><li>Renesas RZ/V2H</li><li>ROS 2 Humble</li><li>MoveIt</li><li>Yocto</li><li>Isaac Gym</li><li>PPO</li><li>Gesture recognition</li></ul>
+      <ul class="tags rv"><li>Renesas RZ/V2H</li><li>ROS 2 Humble</li><li>MoveIt</li><li>Yocto</li><li>Isaac Gym</li><li>PyBullet</li><li>PPO</li><li>Gesture recognition</li></ul>
     </div>
   </section>
 
