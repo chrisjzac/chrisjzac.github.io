@@ -179,17 +179,24 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <p class="big rv">Seeing is only half of it. The real test is a robot that balances, walks and responds to the person in front of it.</p>
       <p class="rv">On a small humanoid, I built gait control, hand-gesture actions and vision-based balancing that run on the Renesas RZ/V2H edge chip, with no cloud and no workstation. I trained walking policies with reinforcement learning (PPO) in Isaac Gym, then worked through the kinematics, joint limits and actuation needed to carry them over to the real robot.</p>
     </div>
+    <div class="col">
+      <p class="label rv" style="margin-top:56px">On the road</p>
+      <p class="rv">Then we took the humanoids out of the lab and in front of people. In Yokohama, Japan, we showed them at EdgeTech+ 2024, a three-day show run by the Japan Embedded Systems Technology Association, and at Renesas AI Tech Day, doing real-time perception, navigation and interaction on the edge chip. Back home in Bengaluru, at VLSID 2025, the humanoid responded live to hand gestures from visitors.</p>
+    </div>
     <div class="wide">
+      <figure class="rv">
+        <div class="frame"><img src="assets/expo_edgetech.jpg" alt="The Renesas stand at EdgeTech+ 2024 in Yokohama" loading="lazy" style="aspect-ratio:16/10"></div>
+        <figcaption>EdgeTech+ 2024, Yokohama, Japan.</figcaption>
+      </figure>
       <figure class="pair rv">
         <div class="frame">
-          <video src="assets/ainex_real.mp4" poster="assets/ainex_real.jpg" muted loop playsinline preload="none" aria-label="Humanoid robot moving in simulation"></video>
-          <img src="assets/ainex_pose.jpg" alt="Humanoid pose checks in simulation" loading="lazy">
+          <img src="assets/expo_renesas.jpg" alt="Two humanoid robots on the Ignitarium table at Renesas AI Tech Day" loading="lazy">
+          <img src="assets/expo_vlsid.jpg" alt="The Ignitarium team at the VLSID 2025 stand" loading="lazy">
         </div>
-        <figcaption>Humanoid motion in simulation (left) and pose checks before running on hardware (right).</figcaption>
+        <figcaption>Our humanoids at Renesas AI Tech Day, Yokohama (left), and the team at VLSID 2025, Bengaluru (right).</figcaption>
       </figure>
     </div>
     <div class="col">
-      <blockquote class="rv">We took it on stage at EdgeTech+ 2024 and Renesas AI Tech Day in Yokohama, and at VLSID 2025, doing real-time perception and interaction on an edge chip.</blockquote>
       <ul class="tags rv"><li>Renesas RZ/V2H</li><li>Isaac Gym</li><li>PPO</li><li>Inverse kinematics</li><li>Gesture recognition</li></ul>
     </div>
   </section>
