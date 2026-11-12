@@ -88,6 +88,12 @@ blockquote{margin:48px 0;padding:0 0 0 24px;border-left:2px solid var(--brown);f
 .card div{padding:18px 22px 22px}
 .card h3{font-size:1.2rem;margin-bottom:8px}
 .card p{font-size:.92rem;color:var(--muted);margin:0 0 12px;line-height:1.6}
+.cards.compact{gap:12px;margin:24px 0}
+.compact .card{display:flex;align-items:stretch}
+.compact .card img{width:96px;flex:none;aspect-ratio:auto;object-fit:cover;border-bottom:0;border-right:1px solid var(--line)}
+.compact .card div{padding:14px 18px}
+.compact .card h3{font-size:1.02rem;margin-bottom:4px}
+.compact .card p{font-size:.86rem;margin:0 0 8px;line-height:1.5}
 
 /* timeline */
 .tl{list-style:none;margin:40px 0;padding:0}
@@ -370,27 +376,25 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
     <div class="col">
       <p class="label rv">Interlude</p>
       <h2 class="rv">Along the way, I build the tools.</h2>
-      <p class="rv">Some problems need a tool before they need a robot. These are a few I built along the way.</p>
+      <p class="rv">Some problems need a tool before they need a robot.</p>
     </div>
     <div class="wide">
-      <div class="cards">
+      <div class="cards compact">
         <article class="card rv">
-          <img src="assets/twin_flow.jpg" alt="Pipe network coloured by water flow" loading="lazy">
-          <div><h3>Piping digital twin</h3><p>Turns a 3-million-point laser scan and a P&amp;ID into a measured 3D model, 2D CAD views and EPANET hydraulics, in a 2D/3D what-if editor. It also works as a Blender add-on.</p><ul class="tags"><li>Python</li><li>EPANET</li><li>three.js</li></ul></div>
+          <div><h3>Piping digital twin</h3><p>Laser scan and P&amp;ID to a measured 3D model, CAD views and EPANET hydraulics.</p><ul class="tags"><li>Python</li><li>EPANET</li><li>three.js</li></ul></div>
         </article>
         <article class="card rv">
-          <img src="assets/scan2cad.jpg" alt="Pipe CAD model fitted from a point cloud" loading="lazy" style="background:#16161a;object-fit:contain">
-          <div><h3>Scan-to-CAD for pipe networks</h3><p>Fits parametric CAD models to LiDAR scans using slab slicing and RANSAC circle fits. An MCP server lets an LLM run the fit and an OpenFOAM flow simulation.</p><ul class="tags"><li>RANSAC</li><li>FreeCAD</li><li>OpenFOAM</li></ul></div>
+          <div><h3>Scan-to-CAD for pipe networks</h3><p>Fits CAD models to LiDAR scans with RANSAC; an MCP server lets an LLM run the fit and an OpenFOAM simulation.</p><ul class="tags"><li>RANSAC</li><li>FreeCAD</li><li>OpenFOAM</li></ul></div>
         </article>
         <article class="card rv">
           <img src="assets/gripper.jpg" alt="3D-printable two-finger gear claw" loading="lazy" style="background:#f1f0ec">
-          <div><h3>Printable gripper for an Epson arm</h3><p>A two-finger claw for payloads up to 2.5 kg, made from two printed parts and one servo, with meshing gears. It comes with a URDF for simulation and VLA training.</p><ul class="tags"><li>OpenSCAD</li><li>URDF</li></ul></div>
+          <div><h3>Printable gripper</h3><p>Two printed parts and one servo, for 2.5 kg payloads, with a URDF for simulation.</p><ul class="tags"><li>OpenSCAD</li><li>URDF</li></ul></div>
         </article>
         <article class="card rv">
-          <div><h3>Isaac Sim cloud deployer</h3><p>A VS Code extension that deploys Isaac Sim to a cloud GPU in one click, using SSH and Docker Compose. It replaced a hand-run control panel.</p><ul class="tags"><li>TypeScript</li><li>Docker</li></ul></div>
+          <div><h3>Isaac Sim cloud deployer</h3><p>A VS Code extension that deploys Isaac Sim to a cloud GPU in one click.</p><ul class="tags"><li>TypeScript</li><li>Docker</li></ul></div>
         </article>
       </div>
-      <p class="rv" style="text-align:center;font-size:.82rem;color:var(--muted)">Several of these were built for clients, so their code is private. All media comes from my own simulation runs and renders.</p>
+      <p class="rv" style="text-align:center;font-size:.82rem;color:var(--muted)">Several were built for clients, so their code is private.</p>
     </div>
   </section>
 
