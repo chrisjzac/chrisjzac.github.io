@@ -67,6 +67,7 @@ figure .frame{border-radius:14px;overflow:hidden;box-shadow:var(--shadow);backgr
 figure video,figure img{width:100%;aspect-ratio:16/9;object-fit:cover}
 figure.pair .frame{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--paper)}
 figure.pair img,figure.pair video{aspect-ratio:4/3}
+figure.trio .frame{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--paper)}
 figcaption{font-size:.85rem;color:var(--muted);margin-top:14px;text-align:center;font-style:italic}
 
 .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:36px 0}
@@ -123,7 +124,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
   .facts{grid-template-columns:1fr}
   .cards,.skills{grid-template-columns:1fr}
   .tl li{grid-template-columns:1fr;gap:4px}
-  figure.pair .frame{grid-template-columns:1fr}
+  figure.pair .frame,figure.trio .frame{grid-template-columns:1fr}
   figure.pair img,figure.pair video{aspect-ratio:16/10}
 }
 </style>
@@ -176,7 +177,24 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       </figure>
     </div>
     <div class="col">
-      <p class="rv">Then the vision had to reach into 3D. A proof of concept with an Intel RealSense and GraspNet showed a robot where to grip. For a client, I built a full pick-and-place pipeline: YOLOv8 finds the part, SAM segments it, Template Pose estimates its 6D pose, and my own 3D reconstruction suite, built on RANSAC and ICP, rebuilds it from depth cameras like the Mech-Eye Nano, first with a turntable and then without one.</p>
+      <p class="rv">Then the vision had to reach into 3D. I built a perception stack for pick-and-place robots from scratch. A new object is registered by scanning it on a turntable with a Mech-Eye industrial 3D camera, and rebuilt as a 3D model with RGB-D registration, ICP and pose-graph loop closure. YOLOv8, SAM and Template Pose then find it, segment it and estimate its 6DoF pose.</p>
+    </div>
+    <div class="wide">
+      <figure class="rv">
+        <div class="frame"><video src="assets/perception.mp4" poster="assets/perception.jpg" muted loop playsinline preload="none" aria-label="Perception software overview: new object registration, 3D reconstruction and 6DoF pose estimation"></video></div>
+        <figcaption>The perception stack: register a new object, reconstruct it in 3D, estimate its 6DoF pose.</figcaption>
+      </figure>
+    </div>
+    <div class="col">
+      <p class="rv">On an industrial arm, a stereo camera finds the object and the arm picks and shelves it with a gripper I designed from scratch: 3D model, actuation, electronics and the arm's SPEL control code.</p>
+    </div>
+    <div class="wide">
+      <figure class="rv">
+        <div class="frame"><video src="assets/gripper_pick.mp4" poster="assets/gripper_pick.jpg" muted loop playsinline preload="none" aria-label="An industrial arm with a custom blue gripper detects a bottle, grasps it and places it on a shelf"></video></div>
+        <figcaption>Intelligent robot manipulator: detect, estimate pose, grasp and place, with my gripper (sped up).</figcaption>
+      </figure>
+    </div>
+    <div class="col">
       <blockquote class="rv">Detect it, segment it, estimate its pose, rebuild it in 3D. Everything I've built since rests on those four steps.</blockquote>
       <p class="rv">I wrote about part of it too: "In the Pursuit of Finding Depth", a two-part explainer on how a single camera can learn to estimate depth.</p>
       <ul class="tags rv"><li>YOLOv8</li><li>SAM · PerSAM</li><li>Template Pose · MegaPose</li><li>GraspNet</li><li>ICP · RANSAC · NeRF</li><li>Defect detection</li><li>Driver monitoring</li></ul>
@@ -188,22 +206,51 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <p class="label rv">Chapter two · Navigation</p>
       <h2 class="rv">Then, teach it to find its way.</h2>
       <p class="big rv">Once a robot can see, it has to know where it is, and get somewhere without hitting anything.</p>
-      <p class="rv">I built a robot vacuum on ROS 2 that maps a home with 2D LiDAR SLAM and spots obstacles with object detection, all running on the customer's own single-board computer. Outdoors, I worked on a delivery robot that maps its surroundings with 3D LiDAR SLAM, and benchmarked FAST-LIO2, Faster-LIO and LIMO-Velo to choose the right mapping engine.</p>
-      <p class="rv">Then the two halves met. On a Renesas R-Car V4H, I put a robot arm on a mobile base: it maps the floor with 2D LiDAR SLAM, drives itself to the pick location, picks the object with AI-accelerated detection and drops it off at the target.</p>
+      <p class="rv">It started with an AMR on the ROS navigation stack: it maps a building, plans to a goal and replans around people who step into its path.</p>
     </div>
     <div class="wide">
-      <figure class="pair rv">
-        <div class="frame">
-          <video src="assets/vacuum.mp4" poster="assets/vacuum.jpg" muted loop playsinline preload="none" aria-label="Robot vacuum navigating a tiled floor beside its live map"></video>
-          <video src="assets/mobile_manip.mp4" poster="assets/mobile_manip.jpg" muted loop playsinline preload="none" aria-label="Mobile robot with an arm driving to a shelf, picking an object and dropping it off"></video>
-        </div>
-        <figcaption>The robot vacuum on Renesas RZ/V2H navigating on its own map (left), and the R-Car V4H mobile manipulator's autonomous pick and drop (right). Both sped up.</figcaption>
+      <figure class="rv">
+        <div class="frame"><video src="assets/amr_nav.mp4" poster="assets/amr_nav.jpg" muted loop playsinline preload="none" aria-label="A small mobile robot plans a path in RViz, drives down a corridor and replans around people"></video></div>
+        <figcaption>Autonomous mobile robot: goal set in RViz, path planned, obstacles avoided, goal reached.</figcaption>
       </figure>
     </div>
     <div class="col">
-      <p class="rv">Localisation itself can be made faster. For a hardware-acceleration study, I rewrote the particle-filter resampling in Nav2's AMCL as a standalone module designed to map onto an FPGA.</p>
-      <p class="rv">Not everything was software. For a robot-arm client I designed the gripper in 3D, built its actuation mechanism and electronics myself, and wrote the arm's SPEL controller code with software limits and a safe reset.</p>
-      <ul class="tags rv"><li>ROS 2</li><li>2D LiDAR SLAM</li><li>3D LiDAR SLAM</li><li>FAST-LIO2</li><li>Mobile manipulation</li><li>R-Car V4H</li><li>Gripper design</li><li>Nav2 AMCL</li></ul>
+      <p class="rv">Then a robot vacuum, built three times on Renesas chips, each version fixing the last one's limits:</p>
+      <p class="rv"><strong>RenaVac, Dec 2023.</strong> One RZ/V2L runs everything: 2D LiDAR SLAM, ROS navigation and camera AI perception.<br>
+      <strong>Proof of concept, Mar 2024.</strong> Real-time motor control moves to an RA6M5 over micro-ROS, freeing the RZ/V2L for SLAM and navigation, in a new chassis.<br>
+      <strong>RZ/V2H, Nov 2024.</strong> DRP-AI-accelerated visual SLAM adds odometry alongside the LiDAR, and it avoids people and boxes on the move.</p>
+    </div>
+    <div class="wide">
+      <figure class="trio rv">
+        <div class="frame">
+          <video src="assets/renavac.mp4" poster="assets/renavac.jpg" muted loop playsinline preload="none" aria-label="RenaVac robot vacuum with LiDAR, RGB camera and ROS navigation"></video>
+          <video src="assets/vacuum_poc.mp4" poster="assets/vacuum_poc.jpg" muted loop playsinline preload="none" aria-label="Robot vacuum proof of concept on Renesas RZ/V2L navigating a tiled floor beside its live map"></video>
+          <video src="assets/vacuum_v2h.mp4" poster="assets/vacuum_v2h.jpg" muted loop playsinline preload="none" aria-label="Robot vacuum on Renesas RZ/V2H with visual SLAM, avoiding boxes and people"></video>
+        </div>
+        <figcaption>Three versions, left to right: RenaVac, the RZ/V2L + RA6M5 proof of concept, and the RZ/V2H vacuum.</figcaption>
+      </figure>
+    </div>
+    <div class="col">
+      <p class="rv">Outdoors, a delivery robot maps its surroundings with 3D LiDAR SLAM, chosen after I benchmarked FAST-LIO2, Faster-LIO and LIMO-Velo, and hands parcels over by QR code.</p>
+    </div>
+    <div class="wide">
+      <figure class="rv">
+        <div class="frame"><video src="assets/delivery.mp4" poster="assets/delivery.jpg" muted loop playsinline preload="none" aria-label="Outdoor delivery robot with 3D LiDAR driving on paving and handing over a parcel by QR code"></video></div>
+        <figcaption>Outdoor delivery robot: 3D perception, 3D SLAM and QR-code delivery.</figcaption>
+      </figure>
+    </div>
+    <div class="col">
+      <p class="rv">Then the two halves met. On a Renesas R-Car V4H, an arm on a mobile base maps the floor, drives to the pick, and picks and drops with AI-accelerated detection. It was shown at Embedded World 2025 in Nuremberg.</p>
+    </div>
+    <div class="wide">
+      <figure class="rv">
+        <div class="frame"><video src="assets/amr_card.mp4" poster="assets/amr_card.jpg" muted loop playsinline preload="none" aria-label="Ignitarium card for the Autonomous Mobile Manipulator at Embedded World"></video></div>
+        <figcaption>The autonomous mobile manipulator, from Ignitarium's Embedded World 2025 teaser.</figcaption>
+      </figure>
+    </div>
+    <div class="col">
+      <p class="rv">Localisation can be made faster too: I rewrote the particle-filter resampling in Nav2's AMCL as a module designed to map onto an FPGA.</p>
+      <ul class="tags rv"><li>ROS 2</li><li>2D LiDAR SLAM</li><li>3D LiDAR SLAM</li><li>FAST-LIO2</li><li>Renesas RZ/V2L</li><li>Mobile manipulation</li><li>R-Car V4H</li><li>Nav2 AMCL</li></ul>
     </div>
   </section>
 
@@ -256,13 +303,13 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <p class="label rv">Chapter four · In the air</p>
       <h2 class="rv">Then, take it into the sky.</h2>
       <p class="big rv">The same edge chip that balances a humanoid can fly a drone.</p>
-      <p class="rv">For search and rescue, I built a drone around the Renesas RZ/V2H on a Kakip board. A PX4 flight controller keeps it in the air; ROS 2 on the Kakip handles teleoperation and takes GPS waypoints from a base station; and a YOLOX and MobileNet-SSD person detector, accelerated on DRP-AI, reports anyone it finds over a cellular link. A second drone, a custom Holybro build on a Qualcomm RB3 Gen 2, flies over rail yards, picks out each track and flags defective sleepers from above.</p>
-      <p class="rv">Indoors there is no GPS, so a third drone had to map its own way. For warehouse inventory, it pairs a Pixhawk running ArduPilot with a Raspberry Pi 5, and localises with RTAB-Map on a RealSense camera, a TF Mini Plus LiDAR and optical flow. MAVROS links ROS 2 to the flight controller, so the drone can take off, follow waypoints down the aisles, scan QR-coded stock and land safely. The whole stack ships in Docker, so every drone in a fleet runs the same software.</p>
+      <p class="rv">For search and rescue, I built a drone on the Renesas RZ/V2H: PX4 flies it, ROS 2 takes GPS waypoints from a base station, and a DRP-AI person detector reports anyone it finds over a cellular link. A second drone, a custom Holybro build on a Qualcomm RB3 Gen 2, flags defective rail sleepers from above.</p>
+      <p class="rv">Indoors there is no GPS, so a third drone maps its own way. It flies warehouse aisles on ArduPilot and a Raspberry Pi 5, localises with RTAB-Map, and scans QR-coded stock, all shipped in Docker.</p>
     </div>
     <div class="wide">
       <figure class="rv">
-        <div class="frame"><video src="assets/rail_drone.mp4" poster="assets/rail_drone.jpg" muted loop playsinline preload="none" aria-label="Drone flying, then aerial footage of rail tracks with sleepers outlined"></video></div>
-        <figcaption>The rail-inspection drone in flight, then multi-track and sleeper defect detection from the air (sped up).</figcaption>
+        <div class="frame"><video src="assets/drone_card.mp4" poster="assets/drone_card.jpg" muted loop playsinline preload="none" aria-label="Ignitarium card for aerial drone-based defect detection, with the drone in flight"></video></div>
+        <figcaption>Aerial drone-based defect detection, from Ignitarium's Embedded World 2025 teaser.</figcaption>
       </figure>
     </div>
     <div class="col">
@@ -386,7 +433,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
   </section>
 </main>
 
-<footer>© 2026 Christopher Jose · Kochi, India</footer>
+<footer>© 2026 Christopher Jose · Kochi, India<br>Project videos and footage © Ignitarium Technology Solutions (now part of Neurealm). Watch more on the <a href="https://www.youtube.com/@IgnitariumTechnologySolutions">Ignitarium YouTube channel</a>.</footer>
 
 <script>
 const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
