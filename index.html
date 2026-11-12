@@ -175,7 +175,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <h2 class="rv">First, a robot has to see.</h2>
       <p class="big rv">Every robot I've worked on starts with the same question: what is in front of me, and where exactly is it?</p>
       <p class="rv">I joined Ignitarium as an intern in June 2021 and moved to a full-time AI Engineer role that November. My first projects were pure vision: spotting defects on printed circuit boards, a driver-monitoring system that watches for drowsiness and distraction, and a camera that finds faces and follows them.</p>
-      <p class="rv">Then the vision had to reach into 3D. I built a perception stack for pick-and-place robots from scratch. A new object is registered by scanning it every 10° on a turntable with a Mech-Eye industrial 3D camera, then rebuilt as a 3D model with RGB-D registration, ICP and pose-graph loop closure; NeRF was tried and dropped as too slow. That model trains YOLOv8 on synthetic images alone, with no real photos. SAM segments each part, Template Pose estimates its 6DoF pose in about a second, and ICP refines it.</p>
+      <p class="rv">Then the vision had to reach into 3D. I built a perception stack for pick-and-place robots from scratch. A new object is registered by scanning it on a turntable with a Mech-Eye industrial 3D camera, then rebuilt as a 3D model with RGB-D registration, ICP and pose-graph loop closure; NeRF was tried and dropped as too slow. That model trains YOLOv8 on synthetic images alone, with no real photos. SAM segments each part, Template Pose estimates its 6DoF pose, and ICP refines it.</p>
     </div>
     <div class="wide">
       <figure class="rv">
@@ -306,8 +306,8 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
     </div>
     <div class="wide">
       <figure class="rv">
-        <div class="frame"><video src="assets/rail_drone.mp4?v=3" poster="assets/rail_drone.jpg?v=3" muted loop playsinline preload="none" aria-label="Custom Holybro drone taking off and flying, then aerial rail-track and sleeper defect detection"></video></div>
-        <figcaption>The rail-inspection drone in flight, then multi-track and sleeper defect detection from the air (sped up).</figcaption>
+        <div class="frame"><video src="assets/rail_drone.mp4?v=4" poster="assets/rail_drone.jpg?v=4" muted loop playsinline preload="none" aria-label="Custom Holybro rail-inspection drone taking off"></video></div>
+        <figcaption>The rail-inspection drone, a custom Holybro build, taking off.</figcaption>
       </figure>
     </div>
     <div class="col">
@@ -331,7 +331,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <p class="label rv">Chapter six · 2025 – today</p>
       <h2 class="rv">Then take it into the real world.</h2>
       <p class="big rv">A twin is only worth something if the real robot behaves the same way.</p>
-      <p class="rv">I brought up the physical robot on an NVIDIA Jetson Orin with the same stack: visual SLAM, a 3D lidar, an EKF and Nav2. To choose the right SLAM back-end I compared cuVSLAM, CudaSift and GLIM against taped ground truth on the floor. I wrote calibration tools for the IMU and cameras. I also patched the Ouster lidar driver so the sensor can sleep when it isn't needed, saving about 15 W of the robot's battery.</p>
+      <p class="rv">I brought up the physical robot on an NVIDIA Jetson Orin with the same stack: visual SLAM, a 3D lidar, an EKF and Nav2. To choose the right SLAM back-end I compared cuVSLAM, CudaSift and GLIM against taped ground truth on the floor. I wrote calibration tools for the IMU and cameras. I also patched the Ouster lidar driver so the sensor can sleep when it isn't needed, saving the robot's battery.</p>
     </div>
     <div class="col"><ul class="tags rv"><li>Jetson Orin</li><li>ROS 2</li><li>C++</li><li>Sensor fusion</li><li>Calibration</li></ul></div>
   </section>
@@ -352,7 +352,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
         </article>
         <article class="card rv">
           <img src="assets/gripper.jpg" alt="3D-printable two-finger gear claw" loading="lazy" style="background:#f1f0ec">
-          <div><h3>Printable gripper</h3><p>Two printed parts and one servo, for 2.5 kg payloads, with a URDF for simulation.</p><ul class="tags"><li>OpenSCAD</li><li>URDF</li></ul></div>
+          <div><h3>Printable gripper</h3><p>Two printed parts and one servo, with a URDF for simulation.</p><ul class="tags"><li>OpenSCAD</li><li>URDF</li></ul></div>
         </article>
         <article class="card rv">
           <div><h3>Isaac Sim cloud deployer</h3><p>A VS Code extension that deploys Isaac Sim to a cloud GPU in one click.</p><ul class="tags"><li>TypeScript</li><li>Docker</li></ul></div>
