@@ -177,7 +177,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       </figure>
     </div>
     <div class="col">
-      <p class="rv">Then the vision had to reach into 3D. I built a perception stack for pick-and-place robots from scratch. A new object is registered by scanning it on a turntable with a Mech-Eye industrial 3D camera, and rebuilt as a 3D model with RGB-D registration, ICP and pose-graph loop closure. YOLOv8, SAM and Template Pose then find it, segment it and estimate its 6DoF pose.</p>
+      <p class="rv">Then the vision had to reach into 3D. I built a perception stack for pick-and-place robots from scratch. A new object is registered by scanning it every 10° on a turntable with a Mech-Eye industrial 3D camera, then rebuilt as a 3D model with RGB-D registration, ICP and pose-graph loop closure; NeRF was tried and dropped as too slow. That model trains YOLOv8 on synthetic images alone, with no real photos. SAM segments each part, Template Pose estimates its 6DoF pose in about a second, and ICP refines it.</p>
     </div>
     <div class="wide">
       <figure class="rv">
