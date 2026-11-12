@@ -6,7 +6,7 @@
 <title>Christopher Jose — Senior Physical AI Engineer</title>
 <meta name="description" content="Christopher Jose, Senior Physical AI Engineer at Neurealm (formerly Ignitarium): perception, SLAM, edge AI, humanoid robots, autonomous mobile robots and Isaac Sim digital twins.">
 <meta property="og:title" content="Christopher Jose — Senior Physical AI Engineer">
-<meta property="og:image" content="assets/rover_mission.jpg">
+<meta property="og:image" content="assets/moveit.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -328,31 +328,9 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <p class="label rv">Chapter five · 2025</p>
       <h2 class="rv">Prove it in simulation first.</h2>
       <p class="big rv">Hardware is slow to change and expensive to break. So I started building the world before building the robot.</p>
-      <p class="rv">In NVIDIA Isaac Sim I built a digital twin of a 0.40 m warehouse robot and gave it a hard target: drive through 18-inch (45.7 cm) aisles, with only 2.86 cm to spare on each side. It uses only what the real robot would have: a RealSense D455's stereo cameras and IMU, plus wheel odometry, fused through cuVSLAM, nvblox and Nav2. The simulator's ground truth is used only to score each run.</p>
-    </div>
-    <div class="wide">
-      <figure class="rv">
-        <div class="frame"><video src="assets/rover_mission.mp4" poster="assets/rover_mission.jpg" muted loop playsinline preload="none" aria-label="Simulated rover driving between warehouse racks"></video></div>
-        <figcaption>The rover on an autonomous mission in its Isaac Sim warehouse.</figcaption>
-      </figure>
-    </div>
-    <div class="col">
-      <div class="facts rv">
-        <div><b>3 / 3</b><span>missions completed with no contact</span></div>
-        <div><b>2.86 cm</b><span>clearance on each side of the aisle</span></div>
-        <div><b>≤ 1.9 cm</b><span>maximum drift from the aisle centre</span></div>
-      </div>
-      <p class="rv">The same approach scaled up to whole buildings. For an airport baggage hall, I simulated a crowd and filmed it with four ceiling cameras. DeepStream gives each person one ID across every camera, a live dashboard tracks occupancy, dwell and intrusion, and a vision-language model (Cosmos Reason) confirms incidents like a fall or an unattended bag.</p>
-    </div>
-    <div class="wide">
-      <figure class="pair rv">
-        <div class="frame">
-          <video src="assets/rover_arm.mp4" poster="assets/rover_arm.jpg" muted loop playsinline preload="none" aria-label="Rover driving an aisle, picking a box from a shelf and dropping it off"></video>
-          <video src="assets/multicam.mp4" poster="assets/multicam.jpg" muted loop playsinline preload="none" aria-label="Four-camera analytics dashboard" style="object-fit:cover;object-position:left"></video>
-        </div>
-        <figcaption>The rover drives the aisle, picks a box off the shelf and drops it off (left, sped up), and four-camera crowd analytics (right).</figcaption>
-      </figure>
-      <div class="col" style="padding:0"><ul class="tags rv"><li>Isaac Sim</li><li>cuVSLAM</li><li>nvblox</li><li>ROS 2 Nav2</li><li>DeepStream</li><li>Vision-language models</li></ul></div>
+      <p class="rv">In NVIDIA Isaac Sim I built a digital twin of a warehouse robot and set it to drive itself through very narrow aisles. It uses only what the real robot would have: a RealSense D455's stereo cameras and IMU, plus wheel odometry, fused through cuVSLAM, nvblox and Nav2. The simulator's ground truth is used only to score each run.</p>
+      <p class="rv">The same approach scaled up to whole buildings: a simulated crowd filmed by four ceiling cameras, where DeepStream gives each person one ID across every camera and a vision-language model (Cosmos Reason) confirms incidents like a fall or an unattended bag.</p>
+      <ul class="tags rv"><li>Isaac Sim</li><li>cuVSLAM</li><li>nvblox</li><li>ROS 2 Nav2</li><li>DeepStream</li><li>Vision-language models</li></ul>
     </div>
   </section>
 
