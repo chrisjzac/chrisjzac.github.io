@@ -175,14 +175,6 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <h2 class="rv">First, a robot has to see.</h2>
       <p class="big rv">Every robot I've worked on starts with the same question: what is in front of me, and where exactly is it?</p>
       <p class="rv">I joined Ignitarium as an intern in June 2021 and moved to a full-time AI Engineer role that November. My first projects were pure vision: spotting defects on printed circuit boards, a driver-monitoring system that watches for drowsiness and distraction, and a camera that finds faces and follows them.</p>
-    </div>
-    <div class="wide">
-      <figure class="rv">
-        <div class="frame"><video src="assets/pcb.mp4" poster="assets/pcb.jpg" muted loop playsinline preload="none" aria-label="A robot arm sweeps a camera over a circuit board while detections appear on screen"></video></div>
-        <figcaption>PCB defect detection: an arm-mounted camera inspects a board, component by component (sped up).</figcaption>
-      </figure>
-    </div>
-    <div class="col">
       <p class="rv">Then the vision had to reach into 3D. I built a perception stack for pick-and-place robots from scratch. A new object is registered by scanning it every 10° on a turntable with a Mech-Eye industrial 3D camera, then rebuilt as a 3D model with RGB-D registration, ICP and pose-graph loop closure; NeRF was tried and dropped as too slow. That model trains YOLOv8 on synthetic images alone, with no real photos. SAM segments each part, Template Pose estimates its 6DoF pose in about a second, and ICP refines it.</p>
     </div>
     <div class="wide">
@@ -340,12 +332,6 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <h2 class="rv">Then take it into the real world.</h2>
       <p class="big rv">A twin is only worth something if the real robot behaves the same way.</p>
       <p class="rv">I brought up the physical robot on an NVIDIA Jetson Orin with the same stack: visual SLAM, a 3D lidar, an EKF and Nav2. To choose the right SLAM back-end I compared cuVSLAM, CudaSift and GLIM against taped ground truth on the floor. I wrote calibration tools for the IMU and cameras. I also patched the Ouster lidar driver so the sensor can sleep when it isn't needed, saving about 15 W of the robot's battery.</p>
-    </div>
-    <div class="wide">
-      <figure class="rv">
-        <div class="frame" style="background:#fff"><img src="assets/vslam_bench.jpg" alt="Estimated versus true trajectory plots for three test runs" loading="lazy" style="object-fit:contain"></div>
-        <figcaption>Three test runs: each SLAM estimate against the true corner positions.</figcaption>
-      </figure>
     </div>
     <div class="col"><ul class="tags rv"><li>Jetson Orin</li><li>ROS 2</li><li>C++</li><li>Sensor fusion</li><li>Calibration</li></ul></div>
   </section>
