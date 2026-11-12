@@ -144,8 +144,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
   <li><a href="#move">Robots that move</a></li>
   <li><a href="#body">A body to act</a></li>
   <li><a href="#sky">Into the sky</a></li>
-  <li><a href="#sim">Proving it in sim</a></li>
-  <li><a href="#real">Into the real world</a></li>
+  <li><a href="#sim">Sim to real</a></li>
   <li><a href="#build">Things I build</a></li>
   <li><a href="#path">The path</a></li>
   <li><a href="#next">What's next</a></li>
@@ -158,7 +157,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
     <div>
     <p class="label rv">Christopher Jose · Senior Physical AI Engineer</p>
     <h1 class="rv">I teach robots to <em>see</em>, to <em>move</em>, and to find their way.</h1>
-    <p class="lede rv">For the past five years at Ignitarium, now part of Neurealm, in Kochi, I've built perception, SLAM and edge AI for humanoids, mobile robots and robot arms. I test every one of them in simulation before it meets the real world. This is how that work came together.</p>
+    <p class="lede rv">Five years at Ignitarium, now Neurealm, building perception, SLAM and edge AI for humanoids, mobile robots, arms and drones. Simulated first, then proven for real.</p>
     <div class="links rv">
       <a class="btn solid" href="#see">Read the story</a>
       <a class="btn" href="https://github.com/chrisjzac">GitHub</a>
@@ -171,31 +170,29 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
 
   <section class="chapter" id="see" data-ch>
     <div class="col">
-      <p class="label rv">Chapter one · June 2021 – early 2024</p>
+      <p class="label rv">Chapter one · 2021 – 2024</p>
       <h2 class="rv">First, a robot has to see.</h2>
-      <p class="big rv">Every robot I've worked on starts with the same question: what is in front of me, and where exactly is it?</p>
-      <p class="rv">I joined Ignitarium as an intern in June 2021 and moved to a full-time AI Engineer role that November. My first projects were pure vision: spotting defects on printed circuit boards, a driver-monitoring system that watches for drowsiness and distraction, and a camera that finds faces and follows them.</p>
-      <p class="rv">Then the vision had to reach into 3D. I built a perception stack for pick-and-place robots from scratch. A new object is registered by scanning it on a turntable with a Mech-Eye industrial 3D camera, then rebuilt as a 3D model with RGB-D registration, ICP and pose-graph loop closure; NeRF was tried and dropped as too slow. That model trains YOLOv8 on synthetic images alone, with no real photos. SAM segments each part, Template Pose estimates its 6DoF pose, and ICP refines it.</p>
+      <p class="big rv">What is in front of me, and where exactly is it?</p>
+      <p class="rv">I started on pure vision: PCB defects, driver monitoring, face tracking. Then I took it into 3D, with a pick-and-place perception stack built from scratch.</p>
+      <p class="rv">Scan a new object on a turntable, rebuild it in 3D, train detection on synthetic images alone, then find its 6DoF pose.</p>
     </div>
     <div class="wide">
       <figure class="rv">
         <div class="frame"><video src="assets/perception.mp4?v=2" poster="assets/perception.jpg?v=2" muted loop playsinline preload="none" aria-label="Perception software overview: new object registration, 3D reconstruction and 6DoF pose estimation"></video></div>
-        <figcaption>The perception stack: register a new object, reconstruct it in 3D, estimate its 6DoF pose.</figcaption>
+        <figcaption>Register, reconstruct, estimate pose.</figcaption>
       </figure>
     </div>
     <div class="col">
-      <p class="rv">On an industrial arm, a stereo camera finds the object and the arm picks and shelves it with a gripper I designed from scratch: 3D model, actuation, electronics and the arm's SPEL control code.</p>
+      <p class="rv">On an industrial arm, it picks with a gripper I designed end to end: CAD, actuation, electronics and control code.</p>
     </div>
     <div class="wide">
       <figure class="rv">
         <div class="frame"><video src="assets/gripper_pick.mp4?v=2" poster="assets/gripper_pick.jpg?v=2" muted loop playsinline preload="none" aria-label="An industrial arm with a custom blue gripper detects a bottle, grasps it and places it on a shelf"></video></div>
-        <figcaption>Intelligent robot manipulator: detect, estimate pose, grasp and place, with my gripper (sped up).</figcaption>
+        <figcaption>Detect, grasp, place, with my gripper (sped up).</figcaption>
       </figure>
     </div>
     <div class="col">
-      <blockquote class="rv">Detect it, segment it, estimate its pose, rebuild it in 3D. Everything I've built since rests on those four steps.</blockquote>
-      <p class="rv">I wrote about part of it too: "In the Pursuit of Finding Depth", a two-part explainer on how a single camera can learn to estimate depth.</p>
-      <ul class="tags rv"><li>YOLOv8</li><li>SAM · PerSAM</li><li>Template Pose · MegaPose</li><li>GraspNet</li><li>ICP · RANSAC · NeRF</li><li>Defect detection</li><li>Driver monitoring</li></ul>
+      <ul class="tags rv"><li>YOLOv8</li><li>SAM</li><li>Template Pose</li><li>ICP · RANSAC</li><li>Mech-Eye</li><li>Defect detection</li></ul>
     </div>
   </section>
 
@@ -203,20 +200,20 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
     <div class="col">
       <p class="label rv">Chapter two · Navigation</p>
       <h2 class="rv">Then, teach it to find its way.</h2>
-      <p class="big rv">Once a robot can see, it has to know where it is, and get somewhere without hitting anything.</p>
-      <p class="rv">It started with an AMR on the ROS navigation stack: it maps a building, plans to a goal and replans around people who step into its path.</p>
+      <p class="big rv">Know where you are. Get there without hitting anything.</p>
+      <p class="rv">First, an AMR on ROS: map a building, plan to a goal, replan around people.</p>
     </div>
     <div class="wide">
       <figure class="rv">
         <div class="frame"><video src="assets/amr_nav.mp4?v=2" poster="assets/amr_nav.jpg?v=2" muted loop playsinline preload="none" aria-label="A small mobile robot plans a path in RViz, drives down a corridor and replans around people"></video></div>
-        <figcaption>Autonomous mobile robot: goal set in RViz, path planned, obstacles avoided, goal reached.</figcaption>
+        <figcaption>Goal set, path planned, obstacles avoided.</figcaption>
       </figure>
     </div>
     <div class="col">
-      <p class="rv">Then a robot vacuum, built three times on Renesas chips, each version fixing the last one's limits:</p>
-      <p class="rv"><strong>RenaVac, Dec 2023.</strong> One RZ/V2L runs everything: 2D LiDAR SLAM, ROS navigation and camera AI perception.<br>
-      <strong>Proof of concept, Mar 2024.</strong> Real-time motor control moves to an RA6M5 over micro-ROS, freeing the RZ/V2L for SLAM and navigation, in a new chassis.<br>
-      <strong>RZ/V2H, Nov 2024.</strong> DRP-AI-accelerated visual SLAM adds odometry alongside the LiDAR, and it avoids people and boxes on the move.</p>
+      <p class="rv">Then a robot vacuum, built three times, each fixing the last:</p>
+      <p class="rv"><strong>RenaVac, 2023.</strong> One RZ/V2L runs everything.<br>
+      <strong>Proof of concept, 2024.</strong> Motor control moves to an RA6M5 over micro-ROS.<br>
+      <strong>RZ/V2H, 2024.</strong> Visual SLAM joins the LiDAR, and it dodges people.</p>
     </div>
     <div class="wide">
       <figure class="trio rv">
@@ -225,29 +222,29 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
           <video src="assets/vacuum_poc.mp4?v=2" poster="assets/vacuum_poc.jpg?v=2" muted loop playsinline preload="none" aria-label="Robot vacuum proof of concept on Renesas RZ/V2L navigating a tiled floor beside its live map"></video>
           <video src="assets/vacuum_v2h.mp4?v=2" poster="assets/vacuum_v2h.jpg?v=2" muted loop playsinline preload="none" aria-label="Robot vacuum on Renesas RZ/V2H with visual SLAM, avoiding boxes and people"></video>
         </div>
-        <figcaption>Three versions, left to right: RenaVac, the RZ/V2L + RA6M5 proof of concept, and the RZ/V2H vacuum.</figcaption>
+        <figcaption>RenaVac, the RZ/V2L + RA6M5 proof of concept, and the RZ/V2H vacuum.</figcaption>
       </figure>
     </div>
     <div class="col">
-      <p class="rv">Outdoors, a delivery robot maps its surroundings with 3D LiDAR SLAM, chosen after I benchmarked FAST-LIO2, Faster-LIO and LIMO-Velo, and hands parcels over by QR code.</p>
+      <p class="rv">Outdoors, a delivery robot on 3D LiDAR SLAM hands over parcels by QR code.</p>
     </div>
     <div class="wide">
       <figure class="rv">
         <div class="frame"><video src="assets/delivery.mp4?v=2" poster="assets/delivery.jpg?v=2" muted loop playsinline preload="none" aria-label="Outdoor delivery robot with 3D LiDAR driving on paving and handing over a parcel by QR code"></video></div>
-        <figcaption>Outdoor delivery robot: 3D perception, 3D SLAM and QR-code delivery.</figcaption>
+        <figcaption>3D SLAM and QR-code delivery.</figcaption>
       </figure>
     </div>
     <div class="col">
-      <p class="rv">Then the two halves met: on the Renesas RZ/V2H, I built an AMR with a robot arm on board, a mobile manipulator that was shown at Embedded World 2025 in Nuremberg.</p>
+      <p class="rv">Then the two halves met: an RZ/V2H AMR with a robot arm on board, shown at Embedded World 2025.</p>
     </div>
     <div class="wide">
       <figure class="rv">
         <div class="frame"><video src="assets/mobile_manip.mp4?v=2" poster="assets/mobile_manip.jpg?v=2" muted loop playsinline preload="none" aria-label="Autonomous mobile manipulator: a robot arm on a mecanum-wheel base picking parts from a box"></video></div>
-        <figcaption>The autonomous mobile manipulator, as shown at Embedded World 2025.</figcaption>
+        <figcaption>The mobile manipulator at Embedded World 2025.</figcaption>
       </figure>
     </div>
     <div class="col">
-      <ul class="tags rv"><li>ROS 2</li><li>2D LiDAR SLAM</li><li>3D LiDAR SLAM</li><li>FAST-LIO2</li><li>Renesas RZ/V2L</li><li>Mobile manipulation</li><li>Renesas RZ/V2H</li></ul>
+      <ul class="tags rv"><li>ROS 2</li><li>2D · 3D LiDAR SLAM</li><li>FAST-LIO2</li><li>micro-ROS</li><li>Renesas RZ/V2L · RZ/V2H</li><li>Mobile manipulation</li></ul>
     </div>
   </section>
 
@@ -255,34 +252,32 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
     <div class="col">
       <p class="label rv">Chapter three · 2024 – 2025</p>
       <h2 class="rv">Then, give it a body.</h2>
-      <p class="big rv">Seeing is only half of it. The real test is a robot that balances, walks and responds to the person in front of it.</p>
-      <p class="rv">On a small humanoid, I built gait control, hand-gesture actions and vision-based balancing that run on the Renesas RZ/V2H edge chip, with no cloud and no workstation. Face detection, object detection and obstacle avoidance run on the chip's DRP-AI accelerator. To keep it steady, I used ORB-SLAM2 camera pose as a balance signal, which corrects the drift an IMU alone suffers. I also trained walking policies with reinforcement learning (PPO) in Isaac Gym, then worked through the kinematics, joint limits and actuation needed to carry them over to the real robot. Hand movements were prototyped first in PyBullet, and I built the Yocto images the chip boots.</p>
-    </div>
-    <div class="col">
-      <p class="label rv" style="margin-top:56px">On the road</p>
-      <p class="rv">Then we took the humanoids out of the lab and in front of people. In Yokohama, Japan, we showed them at EdgeTech+ 2024, a three-day show run by the Japan Embedded Systems Technology Association, and at Renesas AI Tech Day, doing real-time perception, navigation and interaction on the edge chip. Back home in Bengaluru, at VLSID 2025, the humanoid responded live to hand gestures from visitors.</p>
+      <p class="big rv">A robot that balances, walks and answers a gesture.</p>
+      <p class="rv">On a small humanoid running entirely on the Renesas RZ/V2H, I built gait control, gesture actions and visual-SLAM balancing, and trained walking policies with reinforcement learning in Isaac Gym.</p>
+      <p class="label rv" style="margin-top:48px">On the road</p>
+      <p class="rv">We took them to EdgeTech+ 2024 and Renesas AI Tech Day in Yokohama, and to VLSID 2025 in Bengaluru.</p>
     </div>
     <div class="wide">
       <figure class="rv">
         <div class="frame"><img src="assets/expo_edgetech.jpg" alt="The Renesas stand at EdgeTech+ 2024 in Yokohama" loading="lazy" style="aspect-ratio:16/10"></div>
-        <figcaption>EdgeTech+ 2024, Yokohama, Japan.</figcaption>
+        <figcaption>EdgeTech+ 2024, Yokohama.</figcaption>
       </figure>
       <figure class="pair rv">
         <div class="frame">
           <img src="assets/expo_renesas.jpg" alt="Two humanoid robots on the Ignitarium table at Renesas AI Tech Day" loading="lazy">
           <img src="assets/expo_vlsid.jpg" alt="The Ignitarium team at the VLSID 2025 stand" loading="lazy">
         </div>
-        <figcaption>Our humanoids at Renesas AI Tech Day, Yokohama (left), and the team at VLSID 2025, Bengaluru (right).</figcaption>
+        <figcaption>Renesas AI Tech Day, Yokohama · VLSID 2025, Bengaluru.</figcaption>
       </figure>
     </div>
     <div class="col">
-      <p class="label rv" style="margin-top:56px">An arm of its own</p>
-      <p class="rv">The same edge-first thinking went into a robot arm I built. I moved a collaborative arm off its original Raspberry Pi so it runs on the RZ/V2H EVK, with ROS 2 Humble and MoveIt planning its motion and controlling the motors on the board. From a PC on the same network you can see the arm and move it. Renesas features it on its RZ/V AI partner community page as a starting point for robot-arm projects on the chip, and the code is open source. Before it touched hardware, I modelled the arm in PyBullet with a GUI for joint control, and packaged the MoveIt 2 workspace in Docker with CI.</p>
+      <p class="label rv" style="margin-top:48px">An arm of its own</p>
+      <p class="rv">I moved a collaborative arm onto the RZ/V2H with ROS 2 and MoveIt. Renesas features it on its community page, and the code is open source.</p>
     </div>
     <div class="wide">
       <figure class="rv">
         <div class="frame"><video src="assets/moveit.mp4" poster="assets/moveit.jpg" muted loop playsinline preload="none" aria-label="A robot arm moving under MoveIt control, mirrored live in RViz"></video></div>
-        <figcaption>MoveIt 2 on the RZ/V2H: the arm follows the plan shown live in RViz. Featured on Renesas' RZ/V AI community page.</figcaption>
+        <figcaption>MoveIt 2 on the RZ/V2H, mirrored live in RViz.</figcaption>
       </figure>
     </div>
     <div class="col">
@@ -291,7 +286,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
         <a class="btn" href="https://www.youtube.com/watch?v=HjqAedMYx1M">Watch the demo</a>
         <a class="btn" href="https://renesas-rz.github.io/rzv_ai_sdk/latest/community.html">Renesas community page</a>
       </div>
-      <ul class="tags rv"><li>Renesas RZ/V2H</li><li>ROS 2 Humble</li><li>MoveIt</li><li>Yocto</li><li>Isaac Gym</li><li>PyBullet</li><li>PPO</li><li>Gesture recognition</li></ul>
+      <ul class="tags rv"><li>Renesas RZ/V2H</li><li>DRP-AI</li><li>ROS 2</li><li>MoveIt</li><li>Isaac Gym</li><li>PPO</li><li>Yocto</li></ul>
     </div>
   </section>
 
@@ -299,40 +294,30 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
     <div class="col">
       <p class="label rv">Chapter four · In the air</p>
       <h2 class="rv">Then, take it into the sky.</h2>
-      <p class="big rv">The same edge chip that balances a humanoid can fly a drone.</p>
-      <p class="rv">For search and rescue, I built a drone on the Renesas RZ/V2H: PX4 flies it, ROS 2 takes GPS waypoints from a base station, and a DRP-AI person detector reports anyone it finds over a cellular link. A second drone, a custom Holybro build on a Qualcomm RB3 Gen 2, flags defective rail sleepers from above.</p>
-      <p class="rv">Indoors there is no GPS, so a third drone maps its own way. It flies warehouse aisles on ArduPilot and a Raspberry Pi 5, localises with RTAB-Map, and scans QR-coded stock, all shipped in Docker.</p>
+      <p class="big rv">The same edge chips can fly.</p>
+      <p class="rv">Three drones: search and rescue on the RZ/V2H with PX4, rail inspection on a Qualcomm RB3, and a GPS-free warehouse drone that maps with RTAB-Map and scans stock.</p>
     </div>
     <div class="wide">
       <figure class="rv">
         <div class="frame"><video src="assets/rail_drone.mp4?v=4" poster="assets/rail_drone.jpg?v=4" muted loop playsinline preload="none" aria-label="Custom Holybro rail-inspection drone taking off"></video></div>
-        <figcaption>The rail-inspection drone, a custom Holybro build, taking off.</figcaption>
+        <figcaption>The rail-inspection drone taking off.</figcaption>
       </figure>
     </div>
     <div class="col">
-      <ul class="tags rv"><li>Renesas RZ/V2H</li><li>Kakip</li><li>PX4</li><li>ROS 2</li><li>GPS navigation</li><li>DRP-AI</li><li>Qualcomm RB3</li><li>ArduPilot</li><li>RTAB-Map</li><li>Docker</li></ul>
+      <ul class="tags rv"><li>PX4</li><li>ArduPilot</li><li>ROS 2</li><li>DRP-AI</li><li>Qualcomm RB3</li><li>RTAB-Map</li></ul>
     </div>
   </section>
 
   <section class="chapter" id="sim" data-ch>
     <div class="col">
-      <p class="label rv">Chapter five · 2025</p>
-      <h2 class="rv">Prove it in simulation first.</h2>
-      <p class="big rv">Hardware is slow to change and expensive to break. So I started building the world before building the robot.</p>
-      <p class="rv">In NVIDIA Isaac Sim I built a digital twin of a warehouse robot and set it to drive itself through very narrow aisles. It uses only what the real robot would have: a RealSense D455's stereo cameras and IMU, plus wheel odometry, fused through cuVSLAM, nvblox and Nav2. The simulator's ground truth is used only to score each run.</p>
-      <p class="rv">The same approach scaled up to whole buildings: a simulated crowd filmed by four ceiling cameras, where DeepStream gives each person one ID across every camera and a vision-language model (Cosmos Reason) confirms incidents like a fall or an unattended bag.</p>
-      <ul class="tags rv"><li>Isaac Sim</li><li>cuVSLAM</li><li>nvblox</li><li>ROS 2 Nav2</li><li>DeepStream</li><li>Vision-language models</li></ul>
+      <p class="label rv">Chapter five · 2025 – today</p>
+      <h2 class="rv">Prove it in sim, then for real.</h2>
+      <p class="big rv">Hardware is slow to change and expensive to break, so I build the world first.</p>
+      <p class="rv">In Isaac Sim, a digital twin of a warehouse robot drives very narrow aisles using only its real sensors, fused through cuVSLAM, nvblox and Nav2.</p>
+      <p class="rv">Then the real robot on a Jetson Orin: the same stack, SLAM back-ends compared against ground truth, and calibration tools for every sensor.</p>
+      <p class="rv">The same idea scales to buildings: simulated ceiling cameras where DeepStream tracks each person and a vision-language model flags incidents.</p>
+      <ul class="tags rv"><li>Isaac Sim</li><li>cuVSLAM</li><li>nvblox</li><li>Nav2</li><li>Jetson Orin</li><li>DeepStream</li><li>Vision-language models</li></ul>
     </div>
-  </section>
-
-  <section class="chapter" id="real" data-ch>
-    <div class="col">
-      <p class="label rv">Chapter six · 2025 – today</p>
-      <h2 class="rv">Then take it into the real world.</h2>
-      <p class="big rv">A twin is only worth something if the real robot behaves the same way.</p>
-      <p class="rv">I brought up the physical robot on an NVIDIA Jetson Orin with the same stack: visual SLAM, a 3D lidar, an EKF and Nav2. To choose the right SLAM back-end I compared cuVSLAM, CudaSift and GLIM against taped ground truth on the floor. I wrote calibration tools for the IMU and cameras. I also patched the Ouster lidar driver so the sensor can sleep when it isn't needed, saving the robot's battery.</p>
-    </div>
-    <div class="col"><ul class="tags rv"><li>Jetson Orin</li><li>ROS 2</li><li>C++</li><li>Sensor fusion</li><li>Calibration</li></ul></div>
   </section>
 
   <section class="chapter" id="build" data-ch>
@@ -344,7 +329,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
     <div class="wide">
       <div class="cards compact">
         <article class="card rv">
-          <div><h3>Which engine should run it?</h3><p>Moved stereo, feature tracking, AprilTags and particle resampling between the Jetson Orin's GPU, PVA, OFA and VIC, measuring what each move buys in power, latency and accuracy. Nsight Systems traced a hidden GPU dependency in the offload path.</p><ul class="tags"><li>VPI</li><li>CUDA</li><li>TensorRT</li><li>C++</li></ul></div>
+          <div><h3>Which engine should run it?</h3><p>Moved vision workloads across the Jetson Orin's GPU, PVA, OFA and VIC, trading power, latency and accuracy.</p><ul class="tags"><li>VPI</li><li>CUDA</li><li>TensorRT</li><li>C++</li></ul></div>
         </article>
         <article class="card rv">
           <div><h3>Piping digital twin</h3><p>Laser scan and P&amp;ID to a measured 3D model, CAD views and EPANET hydraulics.</p><ul class="tags"><li>Python</li><li>EPANET</li><li>three.js</li></ul></div>
@@ -369,7 +354,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <p class="label rv">The path so far</p>
       <h2 class="rv">How I got here.</h2>
       <ol class="tl">
-        <li class="rv"><span class="yr">Dec 2025 – now</span><div><h3>Senior Physical AI Engineer, Neurealm</h3><p>Ignitarium is now part of Neurealm, and the work carries on there: warehouse robots, multi-camera analytics and the Isaac Sim digital twins that test them.</p></div></li>
+        <li class="rv"><span class="yr">Dec 2025 – now</span><div><h3>Senior Physical AI Engineer, Neurealm</h3><p>Ignitarium is now Neurealm: warehouse robots, multi-camera analytics and their Isaac Sim twins.</p></div></li>
         <li class="rv"><span class="yr">Jan – Nov 2025</span><div><h3>Senior Physical AI Engineer, Ignitarium</h3><p>Humanoids, a MoveIt 2 arm, a mobile manipulator and drones, all on edge AI platforms.</p></div></li>
         <li class="rv"><span class="yr">Nov 2021 – Jan 2025</span><div><h3>AI Engineer, Ignitarium</h3><p>Detection, segmentation, pose estimation and 3D reconstruction, plus my first ROS robots.</p></div></li>
         <li class="rv"><span class="yr">Jun – Nov 2021</span><div><h3>Intern, Ignitarium</h3><p>Where the story starts.</p></div></li>
@@ -377,7 +362,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
         <li class="rv"><span class="yr">2013 – 2017</span><div><h3>B.Tech, Computer Science</h3><p>Vellore Institute of Technology</p></div></li>
         <li class="rv"><span class="yr">Certifications</span><div><h3>Deep Learning Specialization</h3><p>DeepLearning.AI, 2024 · plus Electricity &amp; Electronics: Robotics (Udemy, 2017)</p></div></li>
         <li class="rv"><span class="yr">Publication</span><div><h3>A Hybrid Method for Diabetic Retinopathy Diagnosis through Blood Vessel Extraction and Exudates Identification from 2D Fundus Image</h3><p>Research Journal of Pharmacy and Technology, vol. 11, no. 3, 2018 · <a href="https://doi.org/10.5958/0974-360X.2018.00214.7" target="_blank" rel="noopener">Read the paper</a></p></div></li>
-        <li class="rv"><span class="yr">Writing &amp; teaching</span><div><h3>"In the Pursuit of Finding Depth"</h3><p>A two-part blog on monocular depth estimation, plus an internal ROS 2 curriculum and a Docker introduction for colleagues.</p></div></li>
+        <li class="rv"><span class="yr">Writing &amp; teaching</span><div><h3>"In the Pursuit of Finding Depth"</h3><p>A two-part blog on monocular depth, plus internal ROS 2 and Docker courses.</p></div></li>
       </ol>
       <div class="skills">
         <div class="rv"><h3>Perception &amp; AI</h3><p>YOLO, SAM, MegaPose, 3D reconstruction, NeRF, vision-language models, DeepStream</p></div>
