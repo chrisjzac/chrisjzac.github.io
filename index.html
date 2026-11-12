@@ -60,6 +60,7 @@ h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:500;letter-spacing:-.01e
 .chapter h2{font-size:clamp(2rem,4.5vw,3rem);margin-bottom:28px}
 .chapter p{margin:0 0 20px;color:var(--ink)}
 .chapter p.muted{color:var(--muted)}
+.chapter p strong,.hero .lede strong{font-weight:600;color:var(--brown-d)}
 .chapter .big{font-family:Fraunces,Georgia,serif;font-size:clamp(1.3rem,2.4vw,1.6rem);line-height:1.5;color:var(--ink)}
 
 figure{margin:48px 0 56px}
@@ -157,7 +158,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
     <div>
     <p class="label rv">Christopher Jose · Senior Physical AI Engineer</p>
     <h1 class="rv">From <em>perception</em> to <em>motion</em>, on the edge.</h1>
-    <p class="lede rv">Five years at Ignitarium, now Neurealm, building perception, SLAM and edge AI for humanoids, mobile robots, arms and drones. Simulated first, then proven for real.</p>
+    <p class="lede rv">Five years at Ignitarium, now Neurealm, building <strong>perception, SLAM and edge AI</strong> for humanoids, mobile robots, arms and drones. Simulated first, then proven for real.</p>
     <div class="links rv">
       <a class="btn solid" href="#see">Read the story</a>
       <a class="btn" href="https://github.com/chrisjzac">GitHub</a>
@@ -173,8 +174,8 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <p class="label rv">Chapter one · 2021 – 2024</p>
       <h2 class="rv">First, a robot has to see.</h2>
       <p class="big rv">What is in front of me, and where exactly is it?</p>
-      <p class="rv">I started on pure vision: PCB defects, driver monitoring, face tracking. Then I took it into 3D, with a pick-and-place perception stack built from scratch.</p>
-      <p class="rv">Scan a new object on a turntable, rebuild it in 3D, train detection on synthetic images alone, then find its 6DoF pose.</p>
+      <p class="rv">I started on pure vision: PCB defects, driver monitoring, face tracking. Then I took it into 3D, with a <strong>pick-and-place perception stack built from scratch</strong>.</p>
+      <p class="rv">Scan a new object on a turntable, rebuild it in 3D, train detection on <strong>synthetic images alone</strong>, then find its <strong>6DoF pose</strong>.</p>
     </div>
     <div class="wide">
       <figure class="rv">
@@ -183,7 +184,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       </figure>
     </div>
     <div class="col">
-      <p class="rv">On an industrial arm, it picks with a gripper I designed end to end: CAD, actuation, electronics and control code.</p>
+      <p class="rv">On an industrial arm, it picks with <strong>a gripper I designed end to end</strong>: CAD, actuation, electronics and control code.</p>
     </div>
     <div class="wide">
       <figure class="rv">
@@ -201,7 +202,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <p class="label rv">Chapter two · Navigation</p>
       <h2 class="rv">Then, teach it to find its way.</h2>
       <p class="big rv">Know where you are. Get there without hitting anything.</p>
-      <p class="rv">First, an AMR on ROS: map a building, plan to a goal, replan around people.</p>
+      <p class="rv">First, <strong>an AMR on ROS</strong>: map a building, plan to a goal, replan around people.</p>
     </div>
     <div class="wide">
       <figure class="rv">
@@ -210,7 +211,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       </figure>
     </div>
     <div class="col">
-      <p class="rv">Then a robot vacuum, built three times, each fixing the last:</p>
+      <p class="rv">Then a robot vacuum, <strong>built three times</strong>, each fixing the last:</p>
       <p class="rv"><strong>RenaVac, 2023.</strong> One RZ/V2L runs everything.<br>
       <strong>Proof of concept, 2024.</strong> Motor control moves to an RA6M5 over micro-ROS.<br>
       <strong>RZ/V2H, 2024.</strong> Visual SLAM joins the LiDAR, and it dodges people.</p>
@@ -226,7 +227,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       </figure>
     </div>
     <div class="col">
-      <p class="rv">Outdoors, a delivery robot on 3D LiDAR SLAM hands over parcels by QR code.</p>
+      <p class="rv">Outdoors, a delivery robot on <strong>3D LiDAR SLAM</strong> hands over parcels by QR code.</p>
     </div>
     <div class="wide">
       <figure class="rv">
@@ -235,7 +236,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       </figure>
     </div>
     <div class="col">
-      <p class="rv">Then the two halves met: an RZ/V2H AMR with a robot arm on board, shown at Embedded World 2025.</p>
+      <p class="rv">Then the two halves met: <strong>an RZ/V2H AMR with a robot arm on board</strong>, shown at Embedded World 2025.</p>
     </div>
     <div class="wide">
       <figure class="rv">
@@ -253,9 +254,9 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <p class="label rv">Chapter three · 2024 – 2025</p>
       <h2 class="rv">Then, give it a body.</h2>
       <p class="big rv">A robot that balances, walks and answers a gesture.</p>
-      <p class="rv">On a small humanoid running entirely on the Renesas RZ/V2H, I built gait control, gesture actions and visual-SLAM balancing, and trained walking policies with reinforcement learning in Isaac Gym.</p>
+      <p class="rv">On a small humanoid <strong>running entirely on the Renesas RZ/V2H</strong>, I built gait control, gesture actions and visual-SLAM balancing, and trained walking policies with <strong>reinforcement learning</strong> in Isaac Gym.</p>
       <p class="label rv" style="margin-top:48px">On the road</p>
-      <p class="rv">We took them to EdgeTech+ 2024 and Renesas AI Tech Day in Yokohama, and to VLSID 2025 in Bengaluru.</p>
+      <p class="rv">We took them to <strong>EdgeTech+ 2024 and Renesas AI Tech Day</strong> in Yokohama, and to <strong>VLSID 2025</strong> in Bengaluru.</p>
     </div>
     <div class="wide">
       <figure class="rv">
@@ -272,7 +273,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
     </div>
     <div class="col">
       <p class="label rv" style="margin-top:48px">An arm of its own</p>
-      <p class="rv">I moved a collaborative arm onto the RZ/V2H with ROS 2 and MoveIt. Renesas features it on its community page, and the code is open source.</p>
+      <p class="rv">I moved a collaborative arm onto the RZ/V2H with ROS 2 and MoveIt. <strong>Renesas features it</strong> on its community page, and <strong>the code is open source</strong>.</p>
     </div>
     <div class="wide">
       <figure class="rv">
@@ -295,7 +296,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <p class="label rv">Chapter four · In the air</p>
       <h2 class="rv">Then, take it into the sky.</h2>
       <p class="big rv">The same edge chips can fly.</p>
-      <p class="rv">Three drones: search and rescue on the RZ/V2H with PX4, rail inspection on a Qualcomm RB3, and a GPS-free warehouse drone that maps with RTAB-Map and scans stock.</p>
+      <p class="rv"><strong>Three drones</strong>: search and rescue on the RZ/V2H with PX4, rail inspection on a Qualcomm RB3, and a GPS-free warehouse drone that maps with RTAB-Map and scans stock.</p>
     </div>
     <div class="wide">
       <figure class="rv">
@@ -313,9 +314,9 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
       <p class="label rv">Chapter five · 2025 – today</p>
       <h2 class="rv">Prove it in sim, then for real.</h2>
       <p class="big rv">Hardware is slow to change and expensive to break, so I build the world first.</p>
-      <p class="rv">In Isaac Sim, a digital twin of a warehouse robot drives very narrow aisles using only its real sensors, fused through cuVSLAM, nvblox and Nav2.</p>
-      <p class="rv">Then the real robot on a Jetson Orin: the same stack, SLAM back-ends compared against ground truth, and calibration tools for every sensor.</p>
-      <p class="rv">The same idea scales to buildings: simulated ceiling cameras where DeepStream tracks each person and a vision-language model flags incidents.</p>
+      <p class="rv">In Isaac Sim, <strong>a digital twin of a warehouse robot</strong> drives very narrow aisles using only its real sensors, fused through cuVSLAM, nvblox and Nav2.</p>
+      <p class="rv">Then <strong>the real robot on a Jetson Orin</strong>: the same stack, SLAM back-ends compared against ground truth, and calibration tools for every sensor.</p>
+      <p class="rv">The same idea scales to buildings: simulated ceiling cameras where DeepStream tracks each person and <strong>a vision-language model flags incidents</strong>.</p>
       <ul class="tags rv"><li>Isaac Sim</li><li>cuVSLAM</li><li>nvblox</li><li>Nav2</li><li>Jetson Orin</li><li>DeepStream</li><li>Vision-language models</li></ul>
     </div>
   </section>
@@ -388,7 +389,7 @@ footer{text-align:center;padding:28px 20px 40px;font-size:.8rem;color:var(--mute
   </section>
 </main>
 
-<footer>© 2026 Christopher Jose · Kochi, India<br>Project videos and footage © Ignitarium Technology Solutions (now part of Neurealm). Watch more on the <a href="https://www.youtube.com/@IgnitariumTechnologySolutions">Ignitarium YouTube channel</a>.</footer>
+<footer>© 2026 Christopher Jose · Kochi, India<br>Project videos and footage © Ignitarium Technology Solutions (now part of Neurealm). Watch more on the <a href="https://www.youtube.com/@IgnitariumTechnologySolutions">Ignitarium YouTube channel</a> · <a href="references.html">Sources and references</a></footer>
 
 <script>
 const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
